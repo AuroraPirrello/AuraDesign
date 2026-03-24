@@ -63,9 +63,6 @@
         .marquee-container {
             overflow: hidden;
             width: 100%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             display: flex;
             /* Ensure container handles the track */
         }
@@ -141,18 +138,27 @@
 
     <!-- Hero Section -->
     <section
-        class="relative w-full h-screen flex flex-col justify-end items-center text-center overflow-hidden bg-black">
+        class="relative w-full h-screen flex flex-col justify-center items-center text-center overflow-hidden bg-black">
         <!-- 3D Canvas Container -->
         <div id="canvas-container"></div>
 
+        <div class="relative z-10 w-full flex flex-col items-center">
         <!-- Marquee Text -->
-        <div class="marquee-container z-10">
+        <div class="marquee-container">
             <div class="marquee-track">
                 <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
                 <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
             </div>
         </div>
 
+            <!-- Content Link/Subtext -->
+            <div class="mt-4 px-4 w-full">
+                <p class="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-[#FAD6D3]">
+                    BY AURORA PIRRELLO
+                </p>
+            </div>
+        </div>
+        
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 animate-bounce text-[#FAD6D3] z-20">
             <i class="fas fa-chevron-down text-2xl"></i>
