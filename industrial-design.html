@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .lang-en.hidden, .lang-it.hidden { display: none !important; }
     </style>
+    <script src="language-switcher.js"></script>
 </head>
 <body class="bg-black text-[#FAD6D3]">
     <!-- Header -->
@@ -17,8 +19,24 @@
         <div class="text-lg font-bold tracking-widest uppercase">
             <a href="index.html" class="hover:text-gray-400 transition-colors"><i class="fas fa-arrow-left mr-2"></i>AuroraPirrello</a>
         </div>
-        <div class="text-sm font-semibold tracking-widest uppercase">
-            Industrial Design
+
+        <div class="flex items-center space-x-12">
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest">
+                <a href="index.html#about" class="hover:text-gray-500 transition-colors uppercase">About</a>
+                <a href="index.html#projects" class="hover:text-gray-500 transition-colors uppercase">
+                    <span class="lang-it">Progetti</span>
+                    <span class="lang-en hidden">Projects</span>
+                </a>
+                <a href="index.html#contact" class="hover:text-gray-500 transition-colors uppercase">
+                    <span class="lang-it">Contatti</span>
+                    <span class="lang-en hidden">Contacts</span>
+                </a>
+            </nav>
+            <div class="flex space-x-4 text-xs font-bold tracking-widest uppercase items-center">
+                <a href="#" class="lang-toggle hover:text-white transition-colors" data-lang="it">IT</a>
+                <span class="opacity-30">|</span>
+                <a href="#" class="lang-toggle hover:text-white transition-colors" data-lang="en">EN</a>
+            </div>
         </div>
     </header>
 
@@ -26,7 +44,8 @@
     <section class="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tight uppercase leading-none text-center">INDUSTRIAL<br/>DESIGN</h1>
         <p class="text-xl md:text-2xl font-light text-center mb-16 max-w-2xl mx-auto text-[#FAD6D3]/80 italic">
-            progettazione e creazione di veri prodotti di industrial design
+            <span class="lang-it">progettazione e creazione di veri prodotti di industrial design</span>
+            <span class="lang-en hidden">design and creation of real industrial design products</span>
         </p>
         
         <!-- Project 1 Setup -->
@@ -40,14 +59,21 @@
                     </div>
                     
                     <div>
-                        <h4 class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">Descrizione</h4>
+                        <h4 class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
                         <p class="text-gray-300 text-lg leading-relaxed">
-                            Inserisci qui la descrizione del tuo progetto. Descrivi l'ispirazione iniziale, lo sviluppo creativo, i problemi risolti e il risultato finale. Questo spazio racconta la storia dietro il tuo design.
+                           <span class="lang-it">Inserisci qui la descrizione del tuo progetto. Descrivi l'ispirazione iniziale, lo sviluppo creativo, i problemi risolti e il risultato finale. Questo spazio racconta la storia dietro il tuo design.</span>
+                            <span class="lang-en hidden">Insert your project description here. Describe the initial inspiration, creative development, problems solved, and the final result. This space tells the story behind your design.</span>
                         </p>
                     </div>
 
                     <div>
-                        <h4 class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">Programmi Usati</h4>
+                        <h4 class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Programmi Usati</span>
+                            <span class="lang-en hidden">Software Used</span>
+                        </h4>
                         <div class="flex flex-wrap gap-3">
                             <span class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] hover:bg-[#FAD6D3] hover:text-black transition-colors cursor-default">SOFTWARE 1</span>
                             <span class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] hover:bg-[#FAD6D3] hover:text-black transition-colors cursor-default">SOFTWARE 2</span>
