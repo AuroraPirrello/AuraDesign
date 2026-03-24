@@ -112,10 +112,18 @@
             pointer-events: none;
             /* Let clicks pass through */
         }
+
+        
+        .lang-en.hidden,
+        .lang-it.hidden {
+            display: none !important;
+        }
+        
     </style>
     <!-- Three.js Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="language-switcher.js"></script>
 </head>
 
 <body class="bg-black text-gray-900">
@@ -126,11 +134,24 @@
         <div class="text-lg font-bold tracking-widest uppercase">
             AuroraPirrello
         </div>
+        <div class="flex items-center space-x-12">
         <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest">
             <a href="#about" class="hover:text-gray-500 transition-colors uppercase">About</a>
-            <a href="#projects" class="hover:text-gray-500 transition-colors uppercase">Projects</a>
-            <a href="#contact" class="hover:text-gray-500 transition-colors uppercase">Contacts</a>
-        </nav>
+            <a href="#projects" class="hover:text-gray-500 transition-colors uppercase">
+                    <span class="lang-it">Progetti</span>
+                    <span class="lang-en hidden">Projects</span>
+                </a>
+                <a href="#contact" class="hover:text-gray-500 transition-colors uppercase">
+                    <span class="lang-it">Contatti</span>
+                    <span class="lang-en hidden">Contacts</span>
+                </a>
+            </nav>
+            <div class="flex space-x-4 text-xs font-bold tracking-widest uppercase items-center">
+                <a href="#" class="lang-toggle hover:text-white transition-colors" data-lang="it">IT</a>
+                <span class="opacity-30">|</span>
+                <a href="#" class="lang-toggle hover:text-white transition-colors" data-lang="en">EN</a>
+            </div>
+        </div>
         <!-- Mobile menu placeholder or keep simple for now as requested -->
     </header>
 
@@ -347,22 +368,23 @@
 
                 <!-- Text Column -->
                 <div class="space-y-6 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold text-black">Chi sono</h3>
+                    <h3 class="text-3xl font-bold text-black">
+                        <span class="lang-it">Chi sono</span>
+                        <span class="lang-en hidden">About Me</span>
+                    </h3>
                     <p class="text-lg text-gray-800 leading-relaxed font-medium">
-                        Benvenuti nel mio mondo digitale. Sono Aurora, una designer appassionata che crede nel potere
-                        della
-                        semplicità e dell'eleganza.
+                        <span class="lang-it">Benvenuti nel mio mondo digitale. Sono Aurora, una designer appassionata che crede nel potere della semplicità e dell'eleganza.</span>
+                        <span class="lang-en hidden">Welcome to my digital world. I am Aurora, a passionate designer who believes in the power of simplicity and elegance.</span>
                     </p>
                     <p class="text-lg text-gray-800 leading-relaxed font-medium">
-                        Il mio approccio unisce estetica e funzionalità, creando esperienze che non solo si vedono, ma
-                        si
-                        sentono. Ogni progetto è una nuova storia da raccontare, un nuovo problema da risolvere con
-                        creatività.
+                        <span class="lang-it">Il mio approccio unisce estetica e funzionalità, creando esperienze che non solo si vedono, ma si sentono. Ogni progetto è una nuova storia da raccontare, un nuovo problema da risolvere con creatività.</span>
+                        <span class="lang-en hidden">My approach combines aesthetics and functionality, creating experiences that are not only seen, but felt. Every project is a new story to tell, a new problem to solve with creativity.</span>
                     </p>
                     <div class="pt-4">
                         <a href="#contact"
                             class="inline-block px-8 py-3 w-fit bg-black text-white font-bold rounded-full hover:bg-transparent hover:text-black transition-colors duration-300 ring-2 ring-black">
-                            Contattami
+                             <span class="lang-it">Contattami</span>
+                            <span class="lang-en hidden">Contact Me</span>
                         </a>
                     </div>
                 </div>
@@ -414,7 +436,10 @@
             class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <div class="mb-8 md:mb-0">
                 <h4 class="text-3xl font-bold mb-2">AURORA PIRRELLO</h4>
-                <p class="text-gray-400">Creare il domani, un pixel alla volta.</p>
+                <p class="text-gray-400">
+                    <span class="lang-it">Creare il domani, un pixel alla volta.</span>
+                    <span class="lang-en hidden">Creating tomorrow, one pixel at a time.</span>
+                </p>
             </div>
 
             <div class="flex space-x-8">
