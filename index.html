@@ -75,13 +75,13 @@
             animation: marquee 15s linear infinite;
         }
 
-.divider-track {
+        .divider-track {
             display: flex;
             white-space: nowrap;
             width: max-content;
             animation: marquee 60s linear infinite;
         }
-        
+
         .marquee-item {
             font-size: 18vw;
             font-weight: 900;
@@ -113,12 +113,120 @@
             /* Let clicks pass through */
         }
 
-        
         .lang-en.hidden,
         .lang-it.hidden {
             display: none !important;
         }
-        
+
+        /* Folder Stack Styles */
+        .folder-stack {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 600px;
+            margin-top: 50px;
+        }
+
+        .folder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-radius: 40px 40px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: visible; /* To allow tab to pop up nicely */
+            border: 3px solid black;
+        }
+
+        .folder-tab {
+            position: absolute;
+            top: -45px;
+            height: 48px;
+            padding: 10px 40px;
+            border-radius: 25px 25px 0 0;
+            font-weight: 900;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            border: 3px solid black;
+            border-bottom: none;
+            white-space: nowrap;
+        }
+
+        .folder-content {
+            flex-grow: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .folder-title {
+            font-size: 8vw;
+            line-height: 0.9;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        /* Pink Folders */
+        .folder-pink {
+            background-color: #FAD6D3;
+            color: black;
+        }
+        .folder-pink .folder-tab {
+            background-color: #FAD6D3;
+            color: black;
+        }
+
+        /* Black Folders */
+        .folder-black {
+            background-color: #000;
+            color: #FAD6D3;
+        }
+        .folder-black .folder-tab {
+            background-color: #000;
+            color: #FAD6D3;
+        }
+
+        /* Staggered Tabs - More spread out */
+        .folder:nth-child(1) .folder-tab { left: 0%; }
+        .folder:nth-child(2) .folder-tab { left: 26%; }
+        .folder:nth-child(3) .folder-tab { left: 52%; }
+        .folder:nth-child(4) .folder-tab { left: 78%; }
+
+        /* Stacked Offsets - Mimicking a real stack */
+        .folder:nth-child(1) { transform: translateY(0px); z-index: 1; }
+        .folder:nth-child(2) { transform: translateY(20px); z-index: 2; }
+        .folder:nth-child(3) { transform: translateY(40px); z-index: 3; }
+        .folder:nth-child(4) { transform: translateY(60px); z-index: 4; }
+
+        /* Interaction - Active folder comes to front and down */
+        .folder.active {
+            transform: translateY(80px) !important;
+            z-index: 10 !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .folder-stack { height: 450px; margin-top: 80px; }
+            .folder-tab { padding: 8px 15px; font-size: 10px; top: -35px; height: 37px; }
+            .folder-title { font-size: 15vw; }
+            .folder:nth-child(2) .folder-tab { left: 25%; }
+            .folder:nth-child(3) .folder-tab { left: 50%; }
+            .folder:nth-child(4) .folder-tab { left: 75%; }
+        }
     </style>
     <!-- Three.js Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -135,9 +243,9 @@
             AuroraPirrello
         </div>
         <div class="flex items-center space-x-12">
-        <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest">
-            <a href="#about" class="hover:text-gray-500 transition-colors uppercase">About</a>
-            <a href="#projects" class="hover:text-gray-500 transition-colors uppercase">
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest">
+                <a href="#about" class="hover:text-gray-500 transition-colors uppercase">About</a>
+                <a href="#projects" class="hover:text-gray-500 transition-colors uppercase">
                     <span class="lang-it">Progetti</span>
                     <span class="lang-en hidden">Projects</span>
                 </a>
@@ -164,13 +272,13 @@
         <div id="canvas-container"></div>
 
         <div class="relative z-10 w-full flex flex-col items-center">
-        <!-- Marquee Text -->
-        <div class="marquee-container">
-            <div class="marquee-track">
-                <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
-                <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
+            <!-- Marquee Text -->
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
+                    <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
+                </div>
             </div>
-        </div>
 
             <!-- Content Link/Subtext -->
             <div class="mt-4 px-4 w-full">
@@ -179,7 +287,7 @@
                 </p>
             </div>
         </div>
-        
+
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 animate-bounce text-[#FAD6D3] z-20">
             <i class="fas fa-chevron-down text-2xl"></i>
@@ -230,89 +338,62 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Works Section -->
-    <section id="projects" class="min-h-screen flex flex-col justify-center py-12 z-20 relative bg-[#FAD6D3]">
+    <section id="projects" class="min-h-screen flex flex-col justify-center py-24 z-20 relative bg-[#FAD6D3]">
         <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
-            <h2 class="text-5xl font-bold mb-8 text-center tracking-tight text-black">
+            <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-black">
                 <span class="lang-it">PROGETTI</span>
                 <span class="lang-en hidden">PROJECTS</span>
             </h2>
 
-            <div class="relative group/nav">
-                <div id="projectContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-10 px-6 md:px-12">
-                    <!-- Work Item 1: INDUSTRIAL DESIGN -->
-                    <a href="industrial-design.html"
-                        class="block h-96 md:h-[512px] group relative overflow-hidden rounded-xl shadow-lg cursor-pointer">
-                        <img src="IMG_4308.png" alt="INDUSTRIAL DESIGN"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                            <h3
-                                class="text-white text-3xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                INDUSTRIAL DESIGN</h3>
-                            <p
-                                class="text-gray-300 mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                                <span class="lang-it">Forma e funzione in perfetta armonia.</span>
-                                <span class="lang-en hidden">Form and function in perfect harmony.</span>
-                            </p>
-                        </div>
-                    </a>
+            <div class="folder-stack" id="folderStack">
+                <!-- Folder 1: INDUSTRIAL DESIGN -->
+                <div class="folder folder-pink active" data-href="industrial-design.html" onclick="handleFolderClick(this)">
+                    <div class="folder-tab">INDUSTRIAL DESIGN</div>
+                    <div class="folder-content">
+                        <div class="folder-title">INDUSTRIAL<br>DESIGN</div>
+                        <p class="text-xl opacity-60 italic font-medium">
+                            <span class="lang-it">Forma e funzione.</span>
+                            <span class="lang-en hidden">Form and function.</span>
+                        </p>
+                    </div>
+                </div>
 
-                    <!-- Work Item 2: URBAN DESIGN -->
-                    <a href="urban-design.html"
-                        class="block h-96 md:h-[512px] group relative overflow-hidden rounded-xl shadow-lg cursor-pointer">
-                        <img src="patio.png"
-                            alt="URBAN DESIGN"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                            <h3
-                                class="text-white text-3xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                URBAN DESIGN</h3>
-                            <p
-                                class="text-gray-300 mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                                <span class="lang-it">Riprogettare gli spazi per il vivere collettivo.</span>
-                                <span class="lang-en hidden">Reimagining spaces for collective living.</span>
-                            </p>
-                        </div>
-                    </a>
+                <!-- Folder 2: URBAN DESIGN -->
+                <div class="folder folder-black" data-href="urban-design.html" onclick="handleFolderClick(this)">
+                    <div class="folder-tab">URBAN DESIGN</div>
+                    <div class="folder-content">
+                        <div class="folder-title">URBAN<br>DESIGN</div>
+                        <p class="text-xl opacity-60 italic font-medium">
+                            <span class="lang-it">Spazi collettivi.</span>
+                            <span class="lang-en hidden">Collective spaces.</span>
+                        </p>
+                    </div>
+                </div>
 
-                    <!-- Work Item 3: GRAPHIC DESIGN -->
-                    <a href="graphic-design.html"
-                        class="block h-96 md:h-[512px] group relative overflow-hidden rounded-xl shadow-lg cursor-pointer">
-                        <img src="ECLIPSE.png" alt="GRAPHIC DESIGN"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                            <h3
-                                class="text-white text-3xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                GRAPHIC DESIGN</h3>
-                            <p
-                                class="text-gray-300 mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                                <span class="lang-it">Creare narrazioni visive significative.</span>
-                                <span class="lang-en hidden">Crafting meaningful visual narratives.</span>
-                            </p>
-                        </div>
-                    </a>
+                <!-- Folder 3: GRAPHIC DESIGN -->
+                <div class="folder folder-pink" data-href="graphic-design.html" onclick="handleFolderClick(this)">
+                    <div class="folder-tab">GRAPHIC DESIGN</div>
+                    <div class="folder-content">
+                        <div class="folder-title">GRAPHIC<br>DESIGN</div>
+                        <p class="text-xl opacity-60 italic font-medium">
+                            <span class="lang-it">Narrazioni visive.</span>
+                            <span class="lang-en hidden">Visual narratives.</span>
+                        </p>
+                    </div>
+                </div>
 
-                    <!-- Work Item 4: WEB DESIGN -->
-                    <a href="web-design.html"
-                        class="block h-96 md:h-[512px] group relative overflow-hidden rounded-xl shadow-lg cursor-pointer">
-                        <img src="RULER.png" alt="WEB DESIGN"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                            <h3
-                                class="text-white text-3xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                WEB DESIGN</h3>
-                            <p
-                                class="text-gray-300 mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                                <span class="lang-it">Condividere la conoscenza attraverso la collaborazione creativa.</span>
-                                <span class="lang-en hidden">Sharing knowledge through creative collaboration.</span>
-                            </p>
-                        </div>
-                    </a>
+                <!-- Folder 4: WEB DESIGN -->
+                <div class="folder folder-black" data-href="web-design.html" onclick="handleFolderClick(this)">
+                    <div class="folder-tab">WEB DESIGN</div>
+                    <div class="folder-content">
+                        <div class="folder-title">WEB<br>DESIGN</div>
+                        <p class="text-xl opacity-60 italic font-medium">
+                            <span class="lang-it">Collaborazione creativa.</span>
+                            <span class="lang-en hidden">Creative collaboration.</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -369,9 +450,8 @@
             <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-black">About Me</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-                <!-- Image Column -->
                 <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 min-h-[300px] md:min-h-0">
-                    <img src="aury.png" alt="Aurora Pirrello" class="w-full h-full object-cover">
+                    <img src="RULER.png" alt="Aurora Pirrello" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Text Column -->
@@ -391,7 +471,7 @@
                     <div class="pt-4">
                         <a href="#contact"
                             class="inline-block px-8 py-3 w-fit bg-black text-white font-bold rounded-full hover:bg-transparent hover:text-black transition-colors duration-300 ring-2 ring-black">
-                             <span class="lang-it">Contattami</span>
+                            <span class="lang-it">Contattami</span>
                             <span class="lang-en hidden">Contact Me</span>
                         </a>
                     </div>
@@ -443,7 +523,7 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <div class="mb-8 md:mb-0">
                 <h4 class="text-3xl font-bold mb-2">AURORA PIRRELLO</h4>
-               <p class="text-black/60">
+                <p class="text-black/60">
                     <span class="lang-it">Creare il domani, un pixel alla volta.</span>
                     <span class="lang-en hidden">Creating tomorrow, one pixel at a time.</span>
                 </p>
@@ -451,19 +531,34 @@
 
             <div class="flex space-x-12 text-sm font-bold tracking-widest uppercase">
                 <a href="https://www.instagram.com/aurasdesign/" target="_blank" class="hover:opacity-50 transition-opacity">Instagram</a>
-                 <button onclick="this.innerText='pirrelloaurora000@gmail.com'; this.style.textTransform='none'; this.style.cursor='default'; this.classList.remove('hover:opacity-50')" class="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest">Email</button>
+                <button onclick="this.innerText='pirrelloaurora000@gmail.com'; this.style.textTransform='none'; this.style.cursor='default'; this.classList.remove('hover:opacity-50')" class="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest">Email</button>
             </div>
         </div>
-         <div class="mt-12 text-center text-black/40 text-xs font-bold tracking-widest uppercase">
+        <div class="mt-12 text-center text-black/40 text-xs font-bold tracking-widest uppercase">
             &copy; 2026 Aurora Pirrello. All rights reserved.
         </div>
     </footer>
 
     <!-- Script removed -->
     <script>
-    </script>
-    <script>
+        function handleFolderClick(element) {
+            if (element.classList.contains('active')) {
+                // If already active, navigate to project page
+                window.location.href = element.getAttribute('data-href');
+            } else {
+                // If not active, bring to front
+                const folders = document.querySelectorAll('.folder');
+                folders.forEach(f => f.classList.remove('active'));
+                element.classList.add('active');
+            }
+        }
     </script>
 </body>
 
 </html>
+
+       
+
+   
+                
+               
