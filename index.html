@@ -250,32 +250,60 @@
 
         @media (max-width: 768px) {
             .folder-stack {
-                height: 450px;
-                margin-top: 80px;
+                height: 360px;
+                margin-top: 60px;
             }
 
             .folder-tab {
-                padding: 8px 15px;
-                font-size: 10px;
-                top: -35px;
-                height: 37px;
+                padding: 6px 12px;
+                font-size: 9px;
+                top: -32px;
+                height: 34px;
+                letter-spacing: 1px;
+            }
+
+            .folder-content {
+                padding: 30px 20px;
             }
 
             .folder-title {
-                font-size: 15vw;
+                font-size: 13vw;
+                letter-spacing: -1px;
             }
 
-            .folder:nth-child(2) .folder-tab {
-                left: 25%;
+            /* Tab positions tighter to avoid overflow */
+            .folder:nth-child(1) .folder-tab { left: 0%; }
+            .folder:nth-child(2) .folder-tab { left: 25%; }
+            .folder:nth-child(3) .folder-tab { left: 50%; }
+            .folder:nth-child(4) .folder-tab { left: 67%; }
+
+            /* Smaller stack offsets */
+            .folder:nth-child(2) { transform: translateY(12px); }
+            .folder:nth-child(3) { transform: translateY(24px); }
+            .folder:nth-child(4) { transform: translateY(36px); }
+
+            .folder.active {
+                transform: translateY(50px) !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .folder-stack {
+                height: 300px;
+                margin-top: 50px;
             }
 
-            .folder:nth-child(3) .folder-tab {
-                left: 50%;
+            .folder-tab {
+                font-size: 7.5px;
+                padding: 5px 8px;
+                letter-spacing: 0.5px;
             }
 
-            .folder:nth-child(4) .folder-tab {
-                left: 75%;
+            .folder-title {
+                font-size: 14vw;
             }
+
+            .folder:nth-child(4) .folder-tab { left: 63%; }
         }
     </style>
     <!-- Three.js Libraries -->
@@ -457,7 +485,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
                 <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 min-h-[300px] md:min-h-0 border-2 border-gray-800">
-                    <img src="aury.png" alt="Aurora Pirrello" class="w-full h-full object-cover">
+                    <img src="RULER.png" alt="Aurora Pirrello" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Text Column -->
@@ -572,8 +600,13 @@
 </body>
 
 </html>
+        
+           
+               
+              
+                    
+                  
 
-       
 
 
 
