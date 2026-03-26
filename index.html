@@ -139,7 +139,8 @@
             border-radius: 40px 40px 20px 20px;
             display: flex;
             flex-direction: column;
-            overflow: visible; /* To allow tab to pop up nicely */
+            overflow: visible;
+            /* To allow tab to pop up nicely */
             border: 3px solid black;
         }
 
@@ -185,6 +186,7 @@
             background-color: #FAD6D3;
             color: black;
         }
+
         .folder-pink .folder-tab {
             background-color: #FAD6D3;
             color: black;
@@ -195,37 +197,85 @@
             background-color: #000;
             color: #FAD6D3;
         }
+
         .folder-black .folder-tab {
             background-color: #000;
             color: #FAD6D3;
         }
 
         /* Staggered Tabs - More spread out */
-        .folder:nth-child(1) .folder-tab { left: 0%; }
-        .folder:nth-child(2) .folder-tab { left: 26%; }
-        .folder:nth-child(3) .folder-tab { left: 52%; }
-        .folder:nth-child(4) .folder-tab { left: 78%; }
+        .folder:nth-child(1) .folder-tab {
+            left: 0%;
+        }
+
+        .folder:nth-child(2) .folder-tab {
+            left: 26%;
+        }
+
+        .folder:nth-child(3) .folder-tab {
+            left: 52%;
+        }
+
+        .folder:nth-child(4) .folder-tab {
+            left: 78%;
+        }
 
         /* Stacked Offsets - Mimicking a real stack */
-        .folder:nth-child(1) { transform: translateY(0px); z-index: 1; }
-        .folder:nth-child(2) { transform: translateY(20px); z-index: 2; }
-        .folder:nth-child(3) { transform: translateY(40px); z-index: 3; }
-        .folder:nth-child(4) { transform: translateY(60px); z-index: 4; }
+        .folder:nth-child(1) {
+            transform: translateY(0px);
+            z-index: 1;
+        }
+
+        .folder:nth-child(2) {
+            transform: translateY(20px);
+            z-index: 2;
+        }
+
+        .folder:nth-child(3) {
+            transform: translateY(40px);
+            z-index: 3;
+        }
+
+        .folder:nth-child(4) {
+            transform: translateY(60px);
+            z-index: 4;
+        }
 
         /* Interaction - Active folder comes to front and down */
         .folder.active {
             transform: translateY(80px) !important;
             z-index: 10 !important;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         @media (max-width: 768px) {
-            .folder-stack { height: 450px; margin-top: 80px; }
-            .folder-tab { padding: 8px 15px; font-size: 10px; top: -35px; height: 37px; }
-            .folder-title { font-size: 15vw; }
-            .folder:nth-child(2) .folder-tab { left: 25%; }
-            .folder:nth-child(3) .folder-tab { left: 50%; }
-            .folder:nth-child(4) .folder-tab { left: 75%; }
+            .folder-stack {
+                height: 450px;
+                margin-top: 80px;
+            }
+
+            .folder-tab {
+                padding: 8px 15px;
+                font-size: 10px;
+                top: -35px;
+                height: 37px;
+            }
+
+            .folder-title {
+                font-size: 15vw;
+            }
+
+            .folder:nth-child(2) .folder-tab {
+                left: 25%;
+            }
+
+            .folder:nth-child(3) .folder-tab {
+                left: 50%;
+            }
+
+            .folder:nth-child(4) .folder-tab {
+                left: 75%;
+            }
         }
     </style>
     <!-- Three.js Libraries -->
@@ -340,7 +390,7 @@
     </div>
 
     <!-- Works Section -->
-    <section id="projects" class="min-h-screen flex flex-col justify-center py-24 z-20 relative bg-[#FAD6D3]">
+    <section id="projects" class="min-h-screen flex flex-col justify-center pt-24 pb-48 md:pb-64 z-20 relative bg-[#FAD6D3]">
         <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
             <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-black">
                 <span class="lang-it">PROGETTI</span>
@@ -349,7 +399,8 @@
 
             <div class="folder-stack" id="folderStack">
                 <!-- Folder 1: INDUSTRIAL DESIGN -->
-                <div class="folder folder-pink active" data-href="industrial-design.html" onclick="handleFolderClick(this)">
+                <div class="folder folder-pink active" data-href="industrial-design.html"
+                    onclick="handleFolderClick(this)">
                     <div class="folder-tab">INDUSTRIAL DESIGN</div>
                     <div class="folder-content">
                         <div class="folder-title">INDUSTRIAL<br>DESIGN</div>
@@ -399,78 +450,39 @@
         </div>
     </section>
 
-    <!-- Scrolling Divider Section -->
-    <div class="relative w-full bg-[#FAD6D3] py-6 md:py-10 z-30 flex items-center justify-center overflow-hidden">
-        <div class="w-full h-12 md:h-16 bg-black flex items-center overflow-hidden shadow-md border-y-2 border-black">
-            <div class="divider-track flex whitespace-nowrap pb-1">
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    THE DESIGN THAT LEAVES A MARK </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    CREATIVITY AND VISION </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    THE DESIGN THAT LEAVES A MARK </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    CREATIVITY AND VISION </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    THE DESIGN THAT LEAVES A MARK </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    CREATIVITY AND VISION </span>
-                <!-- seamless duplicate -->
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    THE DESIGN THAT LEAVES A MARK </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    CREATIVITY AND VISION </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    THE DESIGN THAT LEAVES A MARK </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    CREATIVITY AND VISION </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    THE DESIGN THAT LEAVES A MARK </span>
-                <span
-                    class="text-xl md:text-2xl font-bold tracking-widest uppercase text-[#FAD6D3] px-4 pointer-events-none">✦
-                    CREATIVITY AND VISION </span>
-            </div>
-        </div>
-    </div>
-
     <!-- About Section -->
-    <section id="about" class="min-h-screen flex flex-col justify-center py-24 z-20 relative bg-[#FAD6D3]">
+    <section id="about" class="min-h-screen flex flex-col justify-center py-24 z-20 relative bg-black">
         <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
-            <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-black">ABOUT ME</h2>
+            <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-[#FAD6D3]">About Me</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-                <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 min-h-[300px] md:min-h-0">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 min-h-[300px] md:min-h-0 border-2 border-gray-800">
                     <img src="aury.png" alt="Aurora Pirrello" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Text Column -->
                 <div class="space-y-6 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold text-black">
+                    <h3 class="text-3xl font-bold text-white">
                         <span class="lang-it">Chi sono</span>
                         <span class="lang-en hidden">About Me</span>
                     </h3>
-                    <p class="text-lg text-gray-800 leading-relaxed font-medium">
-                        <span class="lang-it">Benvenuti nel mio mondo digitale. Sono Aurora, una designer appassionata che crede nel potere della semplicità e dell'eleganza.</span>
-                        <span class="lang-en hidden">Welcome to my digital world. I am Aurora, a passionate designer who believes in the power of simplicity and elegance.</span>
+                    <p class="text-lg text-gray-300 leading-relaxed font-medium">
+                        <span class="lang-it">Benvenuti nel mio mondo digitale. Sono Aurora, una designer appassionata
+                            che crede nel potere della semplicità e dell'eleganza.</span>
+                        <span class="lang-en hidden">Welcome to my digital world. I am Aurora, a passionate designer who
+                            believes in the power of simplicity and elegance.</span>
                     </p>
-                    <p class="text-lg text-gray-800 leading-relaxed font-medium">
-                        <span class="lang-it">Il mio approccio unisce estetica e funzionalità, creando esperienze che non solo si vedono, ma si sentono. Ogni progetto è una nuova storia da raccontare, un nuovo problema da risolvere con creatività.</span>
-                        <span class="lang-en hidden">My approach combines aesthetics and functionality, creating experiences that are not only seen, but felt. Every project is a new story to tell, a new problem to solve with creativity.</span>
+                    <p class="text-lg text-gray-300 leading-relaxed font-medium">
+                        <span class="lang-it">Il mio approccio unisce estetica e funzionalità, creando esperienze che
+                            non solo si vedono, ma si sentono. Ogni progetto è una nuova storia da raccontare, un nuovo
+                            problema da risolvere con creatività.</span>
+                        <span class="lang-en hidden">My approach combines aesthetics and functionality, creating
+                            experiences that are not only seen, but felt. Every project is a new story to tell, a new
+                            problem to solve with creativity.</span>
                     </p>
                     <div class="pt-4">
                         <a href="contact.html"
-                            class="inline-block px-8 py-3 w-fit bg-black text-white font-bold rounded-full hover:bg-transparent hover:text-black transition-colors duration-300 ring-2 ring-black">
+                            class="inline-block px-8 py-3 w-fit bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3]">
                             <span class="lang-it">Contattami</span>
                             <span class="lang-en hidden">Contact Me</span>
                         </a>
@@ -520,7 +532,8 @@
 
     <!-- Footer -->
     <footer id="contact" class="bg-[#FAD6D3] text-black py-16">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <div class="mb-8 md:mb-0">
                 <h4 class="text-3xl font-bold mb-2">AURORA PIRRELLO</h4>
                 <p class="text-black/60">
@@ -530,8 +543,11 @@
             </div>
 
             <div class="flex space-x-12 text-sm font-bold tracking-widest uppercase">
-                <a href="https://www.instagram.com/aurasdesign/" target="_blank" class="hover:opacity-50 transition-opacity">Instagram</a>
-                <button onclick="this.innerText='pirrelloaurora000@gmail.com'; this.style.textTransform='none'; this.style.cursor='default'; this.classList.remove('hover:opacity-50')" class="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest">Email</button>
+                <a href="https://www.instagram.com/aurasdesign/" target="_blank"
+                    class="hover:opacity-50 transition-opacity">Instagram</a>
+                <button
+                    onclick="this.innerText='pirrelloaurora000@gmail.com'; this.style.textTransform='none'; this.style.cursor='default'; this.classList.remove('hover:opacity-50')"
+                    class="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest">Email</button>
             </div>
         </div>
         <div class="mt-12 text-center text-black/40 text-xs font-bold tracking-widest uppercase">
@@ -557,6 +573,22 @@
 
 </html>
 
+       
+
+
+
+           
+
+     
+           
+           
+       
+           
+               
+                  
+                   
+                  
+        
        
 
    
