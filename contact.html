@@ -15,7 +15,41 @@
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
         }
-        .lang-en.hidden, .lang-it.hidden { display: none !important; }
+
+        .lang-en.hidden,
+        .lang-it.hidden {
+            display: none !important;
+        }
+
+        /* Flip Card */
+        .flip-card {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
     </style>
     <script src="language-switcher.js"></script>
 </head>
@@ -23,7 +57,8 @@
 <body class="bg-[#FAD6D3] text-black">
     <header class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center text-black">
         <div class="text-lg font-bold tracking-widest uppercase">
-            <a href="index.html" class="hover:opacity-50 transition-opacity"><i class="fas fa-arrow-left mr-2"></i>AuroraPirrello</a>
+            <a href="index.html" class="hover:opacity-50 transition-opacity"><i
+                    class="fas fa-arrow-left mr-2"></i>AuroraPirrello</a>
         </div>
         <div class="flex items-center space-x-12">
             <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest">
@@ -45,67 +80,76 @@
         </div>
     </header>
 
-    <main class="min-h-screen pt-32 pb-16 px-6 md:px-12 flex items-center justify-center">
-        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <!-- Left Side: Text and Contact Info -->
-            <div class="space-y-8">
-                <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
-                    <span class="lang-it">Iniziamo<br>a creare</span>
-                    <span class="lang-en hidden">Let's start<br>creating</span>
-                </h1>
-                <p class="text-xl md:text-2xl font-medium leading-relaxed max-w-lg">
-                    <span class="lang-it">Hai un'idea per un nuovo prodotto o vuoi collaborare? Scrivimi e trasformiamo la tua visione in realtà.</span>
-                    <span class="lang-en hidden">Do you have an idea for a new product or want to collaborate? Write to me and let's turn your vision into reality.</span>
-                </p>
+    <main class="min-h-screen pt-28 pb-16 px-6 md:px-16">
+        <div
+            class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-stretch min-h-[calc(100vh-7rem)]">
 
-                <div class="pt-8 space-y-6">
+            <!-- Left: Text + Contacts -->
+            <div class="flex flex-col justify-center py-12 space-y-10">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4">
+                        <span class="lang-it">Parliamoci</span>
+                        <span class="lang-en hidden">Let's talk</span>
+                    </p>
+                    <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tight leading-tight mb-6">
+                        <span class="lang-it">Iniziamo<br>a creare</span>
+                        <span class="lang-en hidden">Let's start<br>creating</span>
+                    </h1>
+                    <p class="text-lg md:text-xl font-medium leading-relaxed max-w-md opacity-75">
+                        <span class="lang-it">Hai un'idea per un nuovo prodotto o vuoi collaborare? Scrivimi e
+                            trasformiamo la tua visione in realtà.</span>
+                        <span class="lang-en hidden">Do you have an idea for a new product or want to collaborate? Write
+                            to me and let's turn your vision into reality.</span>
+                    </p>
+                </div>
+
+                <div class="space-y-8 border-t-2 border-black/20 pt-10">
+                    <!-- Email -->
                     <div>
-                        <h3 class="text-sm font-bold uppercase tracking-widest opacity-50 mb-2">Email</h3>
-                        <a href="mailto:pirrelloaurora000@gmail.com" class="text-2xl font-bold hover:opacity-50 transition-opacity">
+                        <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-2">Email</p>
+                        <p
+                            class="text-xl md:text-2xl font-bold select-all cursor-text hover:opacity-60 transition-opacity">
                             pirrelloaurora000@gmail.com
-                        </a>
+                        </p>
                     </div>
+                    <!-- Instagram -->
                     <div>
-                        <h3 class="text-sm font-bold uppercase tracking-widest opacity-50 mb-2">Instagram</h3>
-                        <a href="https://www.instagram.com/aurasdesign/" target="_blank" class="text-2xl font-bold hover:opacity-50 transition-opacity flex items-center gap-3">
+                        <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-2">Instagram</p>
+                        <a href="https://www.instagram.com/aurasdesign/" target="_blank"
+                            class="inline-flex items-center gap-3 text-xl md:text-2xl font-bold hover:opacity-60 transition-opacity">
                             <i class="fab fa-instagram"></i> @aurasdesign
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side: Form -->
-            <div class="bg-black text-[#FAD6D3] p-10 md:p-14 rounded-[40px] shadow-2xl">
-                <form class="space-y-8" action="mailto:pirrelloaurora000@gmail.com" method="post" enctype="text/plain">
-                    <div>
-                        <label class="block text-sm font-bold uppercase tracking-widest mb-3">
-                            <span class="lang-it">Nome</span>
-                            <span class="lang-en hidden">Name</span>
-                        </label>
-                        <input type="text" name="Nome" required class="w-full bg-transparent border-b-2 border-[#FAD6D3] opacity-80 focus:opacity-100 py-3 text-xl outline-none transition-all placeholder:text-[#FAD6D3]/30" placeholder="Il tuo nome / Your name">
+            <!-- Right: Flip Business Card -->
+            <div class="hidden md:flex items-center justify-center">
+                <div class="flip-card w-full max-w-md" style="aspect-ratio: 1.75/1; cursor: pointer;"
+                    onclick="this.classList.toggle('flipped')" title="Clicca per girare">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front rounded-[20px] overflow-hidden shadow-2xl">
+                            <img src="1.png" alt="Biglietto da visita - Fronte" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flip-card-back rounded-[20px] overflow-hidden shadow-2xl">
+                            <img src="3.png" alt="Biglietto da visita - Retro" class="w-full h-full object-cover">
+                        </div>
                     </div>
-                    
-                    <div>
-                        <label class="block text-sm font-bold uppercase tracking-widest mb-3">Email</label>
-                        <input type="email" name="Email" required class="w-full bg-transparent border-b-2 border-[#FAD6D3] opacity-80 focus:opacity-100 py-3 text-xl outline-none transition-all placeholder:text-[#FAD6D3]/30" placeholder="hello@example.com">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-bold uppercase tracking-widest mb-3">
-                            <span class="lang-it">Di cosa hai bisogno?</span>
-                            <span class="lang-en hidden">What do you need?</span>
-                        </label>
-                        <textarea rows="4" name="Messaggio" required class="w-full bg-transparent border-b-2 border-[#FAD6D3] opacity-80 focus:opacity-100 py-3 text-xl outline-none transition-all resize-none placeholder:text-[#FAD6D3]/30" placeholder="Raccontami il tuo progetto... / Tell me about your project..."></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-[#FAD6D3] text-black font-black uppercase tracking-widest py-5 rounded-full hover:bg-white transition-colors text-lg mt-8">
-                        <span class="lang-it">Invia messaggio</span>
-                        <span class="lang-en hidden">Send message</span>
-                    </button>
-                </form>
+                    <p class="text-center text-xs font-bold uppercase tracking-widest opacity-40 mt-5">
+                        <span class="lang-it">Tocca per girare</span>
+                        <span class="lang-en hidden">Tap to flip</span>
+                    </p>
+                </div>
             </div>
+
         </div>
     </main>
+
+
 </body>
 
 </html>
+            
+                
+                            
+    
