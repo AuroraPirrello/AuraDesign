@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RULER - Registrazione</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Montserrat', sans-serif;
+            --color-bg: #ffffff;
+            --color-border: #000000;
+            --color-btn: #dcdcdc;
+            --color-btn-hover: #d0d0d0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .login-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 1.5px solid #000000;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 35px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-name {
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        /* Form Container */
+        .form-container {
+            max-width: 960px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Form Row Layout */
+        .form-row {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .form-field {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .form-field label {
+            font-size: 1.2rem;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .form-field input {
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            padding: 8px 12px;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 400;
+            height: 42px;
+            outline: none;
+        }
+
+        .form-field input:focus {
+            background-color: #f9f9f9;
+        }
+
+        /* Specific grid sizing based on image proportions */
+        .row-1 .field-nome { flex: 1.1; }
+        .row-1 .field-nome input { width: 100%; }
+        
+        .row-1 .field-cognome { flex: 1.3; }
+        .row-1 .field-cognome input { width: 100%; }
+        
+        .row-1 .field-eta { flex: 1; }
+        .row-1 .field-eta input { width: 100%; }
+
+        .row-2 .field-email { flex: 1; }
+        .row-2 .field-email input { width: 100%; }
+
+        .row-2 .field-telefono { flex: 1.3; }
+        .row-2 .field-telefono input { width: 100%; }
+
+        .row-3 .field-residenza { flex: 1.8; }
+        .row-3 .field-residenza input { width: 100%; }
+
+        .row-3 .field-citta { flex: 1; }
+        .row-3 .field-citta input { width: 100%; }
+
+        .row-full .form-field {
+            width: 100%;
+        }
+        .row-full .form-field input {
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        /* Submit Button */
+        .submit-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .submit-btn {
+            background-color: var(--color-btn);
+            border: none;
+            padding: 12px 0;
+            width: 260px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--color-btn-hover);
+        }
+
+        .btn-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #4a4a4a;
+            line-height: 1;
+            font-family: var(--font-main);
+        }
+
+        .btn-subtitle {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #707070;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .form-field {
+                width: 100%;
+            }
+            .form-field input {
+                flex-grow: 1;
+            }
+            .brand-name {
+                font-size: 1.6rem;
+            }
+            .form-container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="login-header">
+        <div class="logo-container">
+            <img src="LOGO.png" alt="Ruler Logo" class="logo-img">
+        </div>
+        <div class="brand-name">RULER</div>
+        <a href="ruler.html" class="close-btn">X</a>
+    </header>
+
+    <main>
+        <form class="form-container" onsubmit="event.preventDefault(); alert('Registrazione completata. Era già previsto.');">
+            <!-- Row 1: Nome, Cognome, Età -->
+            <div class="form-row row-1">
+                <div class="form-field field-nome">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-field field-cognome">
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" id="cognome" required>
+                </div>
+                <div class="form-field field-eta">
+                    <label for="eta">Età:</label>
+                    <input type="text" id="eta" required>
+                </div>
+            </div>
+
+            <!-- Row 2: Email, Telefono -->
+            <div class="form-row row-2">
+                <div class="form-field field-email">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-field field-telefono">
+                    <label for="telefono">Numero di telefono:</label>
+                    <input type="tel" id="telefono" required>
+                </div>
+            </div>
+
+            <!-- Row 3: Residenza, Città -->
+            <div class="form-row row-3">
+                <div class="form-field field-residenza">
+                    <label for="residenza">Indirizzo di residenza:</label>
+                    <input type="text" id="residenza" required>
+                </div>
+                <div class="form-field field-citta">
+                    <label for="citta">Città:</label>
+                    <input type="text" id="citta" required>
+                </div>
+            </div>
+
+            <!-- Row 4: Spedizione -->
+            <div class="form-row row-full">
+                <div class="form-field field-spedizione">
+                    <label for="spedizione">Indirizzo di spedizione:</label>
+                    <input type="text" id="spedizione" required>
+                </div>
+            </div>
+
+            <!-- Row 5: Contatti emergenza -->
+            <div class="form-row row-full">
+                <div class="form-field field-emergenza">
+                    <label for="emergenza">Contatti di emergenza:</label>
+                    <input type="text" id="emergenza" required>
+                </div>
+            </div>
+
+            <!-- Row 6: Ospedale vicino -->
+            <div class="form-row row-full">
+                <div class="form-field field-ospedale">
+                    <label for="ospedale">Ospedale più vicino:</label>
+                    <input type="text" id="ospedale" required>
+                </div>
+            </div>
+
+            <!-- Row 7: Tessera sanitaria -->
+            <div class="form-row row-full">
+                <div class="form-field field-tessera">
+                    <label for="tessera">Numero tessera sanitaria:</label>
+                    <input type="text" id="tessera" required>
+                </div>
+            </div>
+
+            <!-- Submit Button Container -->
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">
+                    <span class="btn-title">INVIA</span>
+                    <span class="btn-subtitle">era già previsto.</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>

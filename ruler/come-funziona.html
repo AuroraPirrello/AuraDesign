@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RULER - Come funziona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Montserrat', sans-serif;
+            --color-bg: #ffffff;
+            --color-black: #000000;
+            --color-muted: #8E8883;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 1.5px solid #000000;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 35px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-name {
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 60px auto;
+            padding: 0 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-section {
+            margin-bottom: 50px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #a6a6a6; /* light grey title */
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #a6a6a6;
+            margin-top: 5px;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        .details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .details-paragraph {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #000000;
+            text-align: center;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .bullet-item {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #000000;
+            text-align: center;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 1.6rem;
+            }
+            .content-container {
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+            .page-title {
+                font-size: 2.2rem;
+            }
+            .details-paragraph, .bullet-item {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="logo-container">
+            <img src="LOGO.png" alt="Ruler Logo" class="logo-img">
+        </div>
+        <div class="brand-name">RULER</div>
+        <a href="ruler.html" class="close-btn">X</a>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <div class="title-section">
+                <h1 class="page-title">COME FUNZIONA ?</h1>
+                <p class="page-subtitle">se proprio vuoi saperlo...</p>
+            </div>
+
+            <div class="details-list">
+                <p class="details-paragraph">
+                    Questo anello produce delle microscariche in tali occasioni:
+                </p>
+
+                <ul class="bullet-list">
+                    <li class="bullet-item">-perdita della concentrazione</li>
+                    <li class="bullet-item">-inattività prolungata</li>
+                    <li class="bullet-item">-infrazione delle regole</li>
+                    <li class="bullet-item">-ritardo nel completare un’azione</li>
+                    <li class="bullet-item">-reazioni emotive fuori norma, come la troppa rabbia</li>
+                </ul>
+
+                <p class="details-paragraph" style="margin-top: 25px;">
+                    Sensi biometrici: battito, micro-movimenti, sudorazione
+                </p>
+
+                <p class="details-paragraph">
+                    Microscariche correttive: brevi, non letali, ma sufficienti a creare associazione dolore-errore
+                </p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

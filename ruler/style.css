@@ -1,0 +1,603 @@
+:root {
+    --color-taupe: #8E8883;
+    --color-taupe-dark: #7A7570;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-grey-light: #f5f5f5;
+    --font-main: 'Montserrat', sans-serif;
+    --spacing-container: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-black);
+    overflow-x: hidden;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4 {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--font-main);
+    border: none;
+    background: none;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--color-white);
+    position: relative;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-left: auto;
+}
+
+.menu-toggle {
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    padding: 50px 20px;
+    text-align: center;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+.bg-text {
+    font-size: 8.5vw;
+    color: #e0e0e0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 1;
+    pointer-events: none;
+    font-weight: 700;
+    opacity: 0.5;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    margin-top: 50px;
+}
+
+.hero-image-container img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.tagline {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Mission Section */
+.mission-section {
+    background-color: var(--color-taupe);
+    color: var(--color-white);
+    padding: 80px 20px;
+}
+
+.mission-container {
+    max-width: var(--spacing-container);
+    margin: 0 auto;
+}
+
+.mission-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+.mission-row.reverse {
+    flex-direction: row-reverse; /* Flip order for 2nd row? But design shows text on left, image on right. Wait. */
+    /* Design: 
+       Row 1: Image Left, Text Right.
+       Row 2: Text Left, Image Right. 
+       HTML has Row 2 as text then image so default flex is correct, no reverse needed actually if HTML order is text then image.
+       Let's check HTML. 
+       Row 1 HTML: Img, Text. (Flex default: Img Left, Text Right) -> Correct.
+       Row 2 HTML: Text, Img. (Flex default: Text Left, Img Right) -> Correct. 
+       So no reverse class needed logically, but I added it for semantic clarity or control.
+    */
+}
+
+.mission-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.mission-text {
+    flex: 1;
+}
+
+.overline {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.mission-text h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.mission-text h2 em {
+    font-family: serif; /* "Right" looks serif italic-y or just contrasting style */
+    font-style: italic;
+    font-weight: 700;
+}
+
+.mission-text h2 .thin {
+    font-weight: 100;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.mission-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.mission-text strong {
+    font-weight: 600;
+}
+
+.mission-text .italic-highlight {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.btn-light-outline {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-light-outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-taupe);
+}
+
+/* Join Banner */
+.join-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255,255,255,0.2);
+    padding: 20px;
+    margin-top: 40px;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.join-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+.arrow-left, .arrow-right {
+    font-size: 1.5rem;
+    color: var(--color-white);
+}
+
+/* Colors Section */
+.colors-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--color-white);
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 60px;
+    color: #bbb;
+    font-weight: 300;
+}
+
+.colors-grid {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 40px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Custom Scrollbar for Colors Grid */
+.colors-grid::-webkit-scrollbar {
+    height: 4px;
+}
+.colors-grid::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+.colors-grid::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.colors-grid::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.color-item {
+    text-align: center;
+    flex: 0 0 220px;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+}
+
+.color-item:hover {
+    transform: translateY(-5px);
+}
+
+.ring-thumb {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Color CSS Tint Filters on pina.png */
+.ring-thumb.verde-invidia {
+    filter: sepia(1) saturate(4) hue-rotate(80deg) brightness(0.95);
+}
+.ring-thumb.viola-autoritario {
+    filter: sepia(1) saturate(4) hue-rotate(240deg) brightness(0.85);
+}
+.ring-thumb.giallo-psicopatico {
+    filter: sepia(1) saturate(4) hue-rotate(15deg) brightness(1.1);
+}
+.ring-thumb.azzurro-obbediente {
+    filter: sepia(1) saturate(4) hue-rotate(170deg) brightness(0.95);
+}
+.ring-thumb.rosso-ribelle {
+    filter: sepia(1) saturate(5) hue-rotate(325deg) brightness(0.9);
+}
+
+/* Color indicators dots */
+.color-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 10px auto 15px;
+    border: 1px solid #ddd;
+}
+.color-indicator.verde-invidia { background-color: #2e7d32; }
+.color-indicator.viola-autoritario { background-color: #6a1b9a; }
+.color-indicator.giallo-psicopatico { background-color: #fdd835; }
+.color-indicator.azzurro-obbediente { background-color: #0288d1; }
+.color-indicator.rosso-ribelle { background-color: #c62828; }
+
+.color-name {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #888;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.btn-small {
+    background-color: #ddd;
+    padding: 8px 25px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Reviews Section */
+.reviews-section {
+    padding: 80px 20px;
+    background-color: var(--color-white);
+    border-top: 1px solid #eee;
+}
+
+.reviews-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: var(--spacing-container);
+    margin: 0 auto;
+}
+
+.review-card {
+    flex: 1;
+    text-align: left;
+}
+
+.reviewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.reviewer-header .name {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.stars {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.review-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #666;
+    font-style: italic;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-taupe-dark);
+    color: #dcdcdc;
+    padding: 60px 20px;
+    font-size: 0.8rem;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--spacing-container);
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col h4 {
+    margin-bottom: 20px;
+    color: var(--color-white);
+    font-size: 0.9rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a:hover {
+    text-decoration: underline;
+}
+
+.newsletter-form input {
+    background: transparent;
+    border: 1px solid #999;
+    padding: 10px;
+    width: 100%;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 1.2rem;
+    color: var(--color-white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .brand-name {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+    }
+    
+    .mission-row, .reviews-grid, .footer-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bg-text {
+        font-size: 11vw;
+    }
+    
+    .mission-row.reverse {
+        flex-direction: column;
+    }
+    
+    .mission-text {
+        text-align: center;
+    }
+}
+
+/* Slide-out Side Menu & Backdrop */
+.menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    max-width: 100%;
+    height: 100vh;
+    background-color: var(--color-taupe);
+    color: var(--color-white);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 40px;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+}
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+.menu-close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 2rem;
+    font-weight: 200;
+    color: var(--color-white);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: opacity 0.2s ease;
+}
+
+.menu-close-btn:hover {
+    opacity: 0.7;
+}
+
+.side-menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-grow: 1;
+    margin-top: 60px;
+}
+
+.side-menu-link {
+    font-size: 2.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-align: center;
+    letter-spacing: 4px;
+    line-height: 1.3;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+}
+
+.side-menu-link:hover {
+    opacity: 0.7;
+}
+
+.side-menu-footer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.side-menu-footer-link {
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 2px;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.side-menu-footer-link:hover {
+    color: var(--color-white);
+}

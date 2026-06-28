@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RULER - Come nasce Ruler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Montserrat', sans-serif;
+            --color-bg: #ffffff;
+            --color-taupe: #8E8883;
+            --color-black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 1.5px solid #000000;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 35px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-name {
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 60px auto 40px;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Bottom Visual Layout */
+        .visual-footer {
+            max-width: 1100px;
+            width: 100%;
+            margin: 20px auto 0;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto; /* Push to bottom of view if content is short */
+        }
+
+        .huge-title {
+            font-size: 13vw;
+            font-weight: 900;
+            color: var(--color-taupe);
+            line-height: 0.8;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            user-select: none;
+            margin-bottom: -15px; /* Pull down slightly to align with bottom of image */
+        }
+
+        .ring-container {
+            width: 45%;
+            max-width: 500px;
+        }
+
+        .ring-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: rotate(-5deg); /* Subtle rotation matching the image tilt */
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 1.6rem;
+            }
+            .content-container {
+                margin-top: 40px;
+                padding: 0 20px;
+            }
+            .story-text {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .visual-footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                margin-top: 40px;
+                padding: 0 20px;
+            }
+            .huge-title {
+                font-size: 18vw;
+                margin-bottom: 0;
+            }
+            .ring-container {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="logo-container">
+            <img src="LOGO.png" alt="Ruler Logo" class="logo-img">
+        </div>
+        <div class="brand-name">RULER</div>
+        <a href="ruler.html" class="close-btn">X</a>
+    </header>
+
+    <main style="display: flex; flex-direction: column; flex-grow: 1;">
+        <div class="content-container">
+            <p class="story-text">
+                RULER nasce dall’idea di creare un oggetto dispotico, in questo caso un anello della disciplina. Questo anello non serve a migliorare l’individuo, ma a normalizzarlo: la concentrazione, l’attività e l’obbedienza diventano parametri tecnici. La libertà è ridefinita come aderenza costante alle regole. L’estetica di questo anello prevede un design minimale, freddo e industriale. Ogni anello ha un numero di serie inciso all’interno, invisibile agli altri ma sempre a contatto con la pelle. Non dice chi sei ma solo che sei “registrato”.
+            </p>
+            <p class="story-text">
+                Nasce dall’osservazione del mondo contemporaneo: un ambiente in cui l’individuo è costantemente stimolato, distratto, disperso. In ogni contesto, l’attenzione è frammentata, la disciplina è un concetto vago, e la libertà personale si mescola con l’ansia della scelta. È proprio in questo vuoto che RULER prende forma, non come un oggetto di emancipazione, ma come un dispositivo di controllo e stabilità.
+            </p>
+            <p class="story-text">
+                L’idea iniziale non era creare un gioiello, né un gadget da indossare: era progettare un metodo per normalizzare la condizione umana, trasformando l’individuo in un sistema prevedibile e affidabile. L’anello diventa allora simbolo e strumento: un cerchio perfetto che richiama ordine, ciclicità, e assenza di deviazioni. La forma semplice e chiusa è deliberata: la perfezione geometrica riflette la perfezione del comportamento richiesto.
+            </p>
+            <p class="story-text">
+                Ogni aspetto di RULER è stato progettato per rendere la disciplina tangibile e misurabile. I materiali, le proporzioni e il design non sono mai casuali: ogni scelta comunica precisione, controllo, costanza. La luce che scivola sulla sua superficie, la densità percepita al tatto, il peso calibrato: tutto è pensato per ricordare all’indossatore la presenza del sistema.
+            </p>
+        </div>
+
+        <div class="visual-footer">
+            <div class="huge-title">RULER</div>
+            <div class="ring-container">
+                <img src="pina.png" alt="Ruler Ring" class="ring-img">
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Montserrat', sans-serif;
+            --color-bg: #ffffff;
+            --color-black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Top Header (Close button only) */
+        .close-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 30px 40px;
+        }
+
+        .close-btn {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #7f7f7f;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: sans-serif;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 800px;
+            width: 100%;
+            margin: auto; /* center vertically and horizontally */
+            padding: 0 40px 100px; /* offset bottom slightly */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .sad-face-svg {
+            margin-bottom: 40px;
+            color: #555555;
+        }
+
+        .error-code {
+            font-size: 5.5rem;
+            font-weight: 100;
+            color: #b3b3b3;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .error-message {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #808080;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .error-description {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-top: 30px;
+            max-width: 650px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 0 20px 60px;
+            }
+            .error-code {
+                font-size: 4rem;
+            }
+            .error-message {
+                font-size: 2rem;
+            }
+            .error-description {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="close-container">
+        <a href="ruler.html" class="close-btn">X</a>
+    </div>
+
+    <main style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+        <div class="content-container">
+            <!-- Sad Face SVG -->
+            <svg class="sad-face-svg" width="180" height="180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="43" stroke="#555555" stroke-width="3.5" />
+                <circle cx="36" cy="40" r="2.5" fill="#555555" />
+                <circle cx="64" cy="40" r="2.5" fill="#555555" />
+                <path d="M30 66 C35 52, 65 52, 70 66" stroke="#555555" stroke-width="3.5" stroke-linecap="round" fill="none" />
+            </svg>
+
+            <h1 class="error-code">404</h1>
+            <h2 class="error-message">Page not found</h2>
+            <p class="error-description">
+                La pagina che stai cercando non esiste o ha qualche tipo di problema.<br>
+                Torna indietro, o vai a ruler.com per scegliere un nuovo percorso.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>
