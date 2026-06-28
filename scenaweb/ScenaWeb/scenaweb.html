@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Esempio A-Frame con GLTF locale</title>
+  <!-- Carichiamo la libreria A-Frame -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    /* Vignetta cinematografica scura sui bordi (focus drammatico) */
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, transparent 35%, rgba(0, 0, 0, 0.85) 100%);
+      pointer-events: none;
+      z-index: 5;
+    }
+  </style>
+</head>
+
+<body x-data="pageData()">
+
+  <!-- Schermata Intro (Overlay Post-Apocalittico) -->
+  <template x-if="showIntro">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-[#1c120c] via-[#0d0907] to-[#1c120c] flex flex-col items-center justify-center z-10">
+      <div class="text-center px-6">
+        <h1 class="text-white text-3xl font-extrabold tracking-widest uppercase mb-2 text-neutral-400">DESOLAZIONE</h1>
+        <p class="text-neutral-500 text-xs tracking-widest uppercase mb-8">Scena WebVR Post-Apocalittica</p>
+        <button @click="startExperience"
+          class="border border-[#8e5a36] hover:bg-[#8e5a36]/20 text-white font-medium tracking-widest uppercase py-3 px-10 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(142,90,54,0.3)] hover:shadow-[0_0_25px_rgba(142,90,54,0.6)]">
+          Inizia l'Esplorazione
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Vignetta cinematografica attiva durante l'esplorazione -->
+  <div x-show="!showIntro" class="vignette" style="display: none;"></div>
+
+
+  <a-scene fog="type: linear; color: #1a120c; near: 8; far: 42;">
+    <!-- Carichiamo l'asset del modello GLTF -->
+    <a-assets>
+      <!-- Assicurati che "assets/models/statue/scene.gltf" esista sul tuo server/progetto -->
+      <a-asset-item id="statueModel" src="assets/models/statue/scene.gltf">
+      </a-asset-item>
+    </a-assets>
+
+    <a-sky src="assets/sky.jpg">
+
+    </a-sky>
+
+
+    <!-- Aggiungiamo un pavimento semplice che simula l'acqua (riflettente e lucido) -->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#0d4f5c"
+      material="roughness: 0.15; metalness: 0.7;">
+    </a-plane>
+
+    <!-- Luce ambientale fioca, fredda e cinerea (rende le ombre molto più scure e spettrali) -->
+    <a-entity light="type: ambient; color: #7a6b61; intensity: 0.20">
+    </a-entity>
+
+    <!-- Luce direzionale Bianca (sole spettrale che si muove lentamente creando ombre rotanti e pulsa in intensità) -->
+    <a-entity light="type: directional; color: #ffffff; intensity: 0.8" position="-4 2 0" rotation="0 0 0"
+      shadow="cast: true" animation="property: position; 
+                 to: 4 4 4; 
+                 dur: 8000; 
+                 easing: easeInOutSine; 
+                 dir: alternate; 
+                 loop: true;" animation__pulse="property: light.intensity;
+                        from: 0.55;
+                        to: 0.85;
+                        dur: 7000;
+                        easing: easeInOutSine;
+                        dir: alternate;
+                        loop: true;">
+    </a-entity>
+
+    <!-- Luce direzionale Nera / Spenta (per creare contrasto d'ombra profonda) -->
+    <a-entity light="type: directional; color: #000000; intensity: 0.0" position="4 2 0" rotation="0 -90 0"
+      shadow="cast: true">
+    </a-entity>
+
+
+    <!-- Modello GLTF: Statua Colossale parzialmente sommersa e animata.
+         La base è sotto y=0 (livello dell'acqua) e oscilla lentamente simulando il moto ondoso. -->
+    <a-entity gltf-model="#statueModel" position="0 -3.5 -6.5" rotation="0 0 0" scale="15 15 15"
+      shadow="cast: true; receive: false" animation="property: position;
+                 from: 0 -3.8 -6.5;
+                 to: 0 -2.8 -6.5;
+                 dur: 16000;
+                 easing: easeInOutSine;
+                 dir: alternate;
+                 loop: true;">
+    </a-entity>
+
+    <!-- Camera con perno rotante posizionato a y=1.0 per inquadrare la scena più dal basso -->
+    <a-entity id="pivot" position="0 1.0 0" animation="property: rotation; 
+                   to: 0 360 0; 
+                   dur: 35000; 
+                   easing: linear; 
+                   loop: true;">
+
+      <!-- Camera arretrata a 22 unità per inquadrare perfettamente la statua colossale senza clipping,
+           inclinata verso l'alto di 15 gradi per l'effetto mastodontico. -->
+      <a-camera fov="45" animation="property: fov; 
+                   to: 60; 
+                   dur: 20000; 
+                   easing: linear; 
+                   dir: alternate; 
+                   loop: true;" position="0 0 22" rotation="-15 0 0" look-controls="enabled: true">
+      </a-camera>
+    </a-entity>
+
+
+    <!-- Tempesta di Sabbia e Cenere (20 particelle 3D animate fluttuanti) -->
+    <a-entity position="0 0 0">
+      <!-- Sabbia 1 -->
+      <a-dodecahedron color="#8e5a36" radius="0.04" position="-2 1 -2"
+        animation="property: position; to: -1.7 2.5 -1.6; dur: 8500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 360 0; dur: 12000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Cenere 2 -->
+      <a-dodecahedron color="#3e352f" radius="0.025" position="2 0.8 1.5"
+        animation="property: position; to: 2.3 2.0 2.0; dur: 10500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 0 360 360; dur: 15000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Brace Ardente 3 (Particella luminosa rossa lava) -->
+      <a-dodecahedron color="#bf3a0d" radius="0.03" position="-1.5 1.5 3"
+        animation="property: position; to: -1.0 2.8 2.5; dur: 9500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 0 360; dur: 11000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Detrito 4 -->
+      <a-dodecahedron color="#5c4d42" radius="0.05" position="3 2 -3"
+        animation="property: position; to: 2.5 3.5 -3.5; dur: 11500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 180 360 180; dur: 14000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Polvere vicina 5 -->
+      <a-dodecahedron color="#2b221a" radius="0.015" position="-0.5 1.8 1.5"
+        animation="property: position; to: -0.2 2.4 1.8; dur: 7500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 180 0; dur: 10000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Sabbia 6 -->
+      <a-dodecahedron color="#a88c74" radius="0.035" position="-3 0.5 2"
+        animation="property: position; to: -2.6 1.8 1.5; dur: 9000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 90 360 180; dur: 13000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Cenere 7 -->
+      <a-dodecahedron color="#3e352f" radius="0.045" position="1.5 2.2 4"
+        animation="property: position; to: 1.0 3.5 3.5; dur: 11000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 360 360; dur: 16000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Sabbia 8 -->
+      <a-dodecahedron color="#8e5a36" radius="0.02" position="-4 1.2 -1"
+        animation="property: position; to: -3.5 2.5 -0.5; dur: 8000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 180 0 360; dur: 9000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Detrito 9 -->
+      <a-dodecahedron color="#5c4d42" radius="0.055" position="4 0.5 -2"
+        animation="property: position; to: 3.5 1.8 -1.5; dur: 12500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 0 180 360; dur: 17000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Polvere vicina 10 -->
+      <a-dodecahedron color="#c6a07c" radius="0.015" position="0.8 1.6 2"
+        animation="property: position; to: 1.1 2.2 2.3; dur: 6500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 360 180; dur: 11000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Sabbia 11 -->
+      <a-dodecahedron color="#8e5a36" radius="0.035" position="-2.5 3 -4"
+        animation="property: position; to: -2.0 4.2 -3.5; dur: 9500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 90 90; dur: 14000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Scintilla 12 (Particella arancione incandescente) -->
+      <a-dodecahedron color="#e65c2e" radius="0.025" position="3.5 2.8 1"
+        animation="property: position; to: 3.0 4.0 0.5; dur: 10000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 180 180 360; dur: 12000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Detrito Incandescente 13 (Rosso scuro bruciante) -->
+      <a-dodecahedron color="#9e2a0b" radius="0.03" position="-1 0.5 -3"
+        animation="property: position; to: -0.7 1.8 -2.5; dur: 8500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 0 360 90; dur: 10500; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Detrito grande 14 -->
+      <a-dodecahedron color="#5c4d42" radius="0.06" position="-4.5 2 3"
+        animation="property: position; to: -4.0 3.5 2.5; dur: 13000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 360 0; dur: 18000; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Sabbia 15 -->
+      <a-dodecahedron color="#c6a07c" radius="0.02" position="2.5 1.5 -5"
+        animation="property: position; to: 2.8 2.8 -4.5; dur: 7000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 90 180 360; dur: 9500; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Cenere 16 -->
+      <a-dodecahedron color="#3e352f" radius="0.04" position="-3.5 1.8 -2.5"
+        animation="property: position; to: -3.0 3.0 -2.0; dur: 12000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 0 180; dur: 15500; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Sabbia 17 -->
+      <a-dodecahedron color="#8e5a36" radius="0.03" position="4.2 2 3"
+        animation="property: position; to: 3.8 3.2 2.5; dur: 9000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 180 360 180; dur: 11500; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Micro-scintilla Vicina 18 (Giallo-arancione acceso) -->
+      <a-dodecahedron color="#ff7f3b" radius="0.012" position="-0.3 1.2 2.5"
+        animation="property: position; to: 0.0 2.0 2.8; dur: 6000; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 180 90; dur: 8500; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Detrito 19 -->
+      <a-dodecahedron color="#5c4d42" radius="0.05" position="-1.8 3 2.5"
+        animation="property: position; to: -1.5 4.5 2.0; dur: 10500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 0 360 360; dur: 13500; easing: linear; loop: true">
+      </a-dodecahedron>
+      <!-- Cenere 20 -->
+      <a-dodecahedron color="#2b221a" radius="0.035" position="1.8 3.5 -2.5"
+        animation="property: position; to: 1.5 4.8 -2.0; dur: 11500; easing: linear; loop: true; dir: alternate"
+        animation__rotate="property: rotation; to: 360 360 0; dur: 16000; easing: linear; loop: true">
+      </a-dodecahedron>
+    </a-entity>
+
+
+  </a-scene>
+
+
+  <!-- Script Alpine per gestire l'overlay e l'audio -->
+  <script>
+    function pageData() {
+      return {
+        showIntro: true,
+
+        startExperience() {
+          // Nascondo l'overlay
+          this.showIntro = false;
+
+          // Faccio partire l'audio di sottofondo
+          const entity = document.getElementById('sound');
+          if (entity) {
+            entity.play();
+          }
+        }
+      }
+    }
+  </script>
+
+
+  <audio id="sound" src="assets/suono.mp3" loop></audio>
+
+
+</body>
+
+</html>
