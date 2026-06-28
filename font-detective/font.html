@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Detective | The Typography Quiz</title>
+    <!-- Google Fonts import per i vari font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Libre+Baskerville:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(0, 0, 0, 0.2);
+            --primary: #f59e0b;
+            /* Amber 500 */
+            --primary-glow: rgba(245, 158, 11, 0.5);
+            --text-main: #000000;
+            --text-muted: #333333;
+            --success: #059669;
+            --error: #dc2626;
+            --font-ui: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-ui);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+
+            overflow-x: hidden;
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            z-index: 100;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #000000;
+        }
+
+        .top-bar .title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Headers */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #000000;
+            letter-spacing: -1px;
+        }
+
+        .start-title {
+            font-size: 6rem;
+            /* Ridotto leggermente per farlo stare in una riga su schermi medi */
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            white-space: nowrap;
+            /* Impedisce al testo di andare a capo */
+            flex-wrap: nowrap;
+            /* Assicura che rimanga su una riga */
+        }
+
+        .title-letter {
+            display: inline-block;
+        }
+
+        /* Spazio "Detective" */
+        .title-space {
+            width: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #d97706);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px var(--primary-glow);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        .btn-start {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 1.5rem 3.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            border-radius: 0;
+            /* Forma squadrata/quadrato */
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px);
+            background-color: #222222;
+        }
+
+        .btn-restart {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 1.5rem 3.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            border-radius: 0;
+            margin-top: 1rem;
+        }
+
+        .btn-restart:hover {
+            transform: translateY(-2px);
+            background-color: #222222;
+        }
+
+        /* Screens */
+        .screen {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Quiz UI */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .word-display-container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle glow behind the word */
+        .word-display-container::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .word-display {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            z-index: 1;
+            color: #000000;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .option-btn {
+            background: #ffffff;
+            border: 2px solid #000000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: var(--font-ui);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: #f8f8f8;
+            box-shadow: 4px 4px 0px #000000;
+            transform: translateY(-2px);
+        }
+
+        .option-btn.correct {
+            background: #d1fae5;
+            border-color: #065f46;
+            color: #065f46;
+        }
+
+        .option-btn.wrong {
+            background: #fee2e2;
+            border-color: #b91c1c;
+            color: #b91c1c;
+            opacity: 0.7;
+        }
+
+        /* Modal Overlay for Font Characteristics */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .specs-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000000;
+            border: 1px solid var(--primary);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 600px;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 40px rgba(245, 158, 11, 0.1);
+        }
+
+        .modal-overlay.active .specs-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .specs-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .specs-icon {
+            font-size: 2.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .specs-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .spec-item {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #000000;
+        }
+
+        .spec-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .spec-item.full-width {
+            grid-column: span 2;
+        }
+
+        /* Result Screen */
+        .result-score {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #000000;
+            margin: 1rem 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            color: var(--error);
+            background: rgba(239, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--error);
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .start-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .start-title {
+                font-size: 3rem;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 10px;
+                position: static;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-item.full-width {
+                grid-column: span 1;
+            }
+
+            .word-display {
+                font-size: 3rem;
+            }
+
+            .glass-panel {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div>AURADESIGN</div>
+        <div class="title">FONT DETECTIVE</div>
+        <div>FONTS</div>
+    </div>
+
+    <div id="app">
+        <!-- START SCREEN -->
+        <div id="screen-start" class="screen" style="text-align: center; padding: 4rem 0;">
+            <h1 class="start-title">
+                <span class="title-letter" style="font-family: Arial, sans-serif;">F</span>
+                <span class="title-letter" style="font-family: 'Times New Roman', serif;">O</span>
+                <span class="title-letter" style="font-family: 'Courier New', monospace;">N</span>
+                <span class="title-letter" style="font-family: 'Comic Sans MS', cursive;">T</span>
+
+                <span class="title-space"></span>
+
+                <span class="title-letter" style="font-family: 'Libre Baskerville', serif;">D</span>
+                <span class="title-letter" style="font-family: 'Trebuchet MS', sans-serif;">E</span>
+                <span class="title-letter" style="font-family: 'Pacifico', cursive;">T</span>
+                <span class="title-letter" style="font-family: 'Franklin Gothic Medium', sans-serif;">E</span>
+                <span class="title-letter" style="font-family: Helvetica, sans-serif;">C</span>
+                <span class="title-letter" style="font-family: 'Arial Narrow', sans-serif;">T</span>
+                <span class="title-letter" style="font-family: 'Courier New', monospace;">I</span>
+                <span class="title-letter" style="font-family: 'Comic Sans MS', cursive;">V</span>
+                <span class="title-letter" style="font-family: Arial, sans-serif;">E</span>
+            </h1>
+            <p class="subtitle">Metti alla prova il tuo occhio tipografico.<br>Indovina il font e scopri i suoi segreti
+                classificati.</p>
+            <button class="btn-start" onclick="initQuiz()">INIZIA L'INDAGINE</button>
+            <div id="loading-error" class="error-message hidden">
+                Impossibile caricare i dati dei font (fonts.json). Se stai aprendo il file localmente, prova a usare un
+                server locale (es. Live Server su VSCode).
+            </div>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="screen-quiz" class="screen glass-panel hidden">
+            <div class="status-bar">
+                <span>Caso: <span id="current-q-num">1</span>/<span id="total-q-num">5</span></span>
+                <span>Punti: <span id="score-display">0</span></span>
+            </div>
+
+            <div class="word-display-container">
+                <div id="target-word" class="word-display">Tipografia</div>
+            </div>
+
+            <div class="options-grid" id="options-container">
+                <!-- Buttons injected by JS -->
+            </div>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="screen-result" class="screen glass-panel hidden" style="text-align: center;">
+            <h2>Indagine Conclusa</h2>
+            <div class="result-score" id="final-score">0</div>
+            <p class="subtitle" style="margin-bottom: 2rem;">Punti ottenuti sui casi analizzati.</p>
+            <button class="btn-restart" onclick="resetApp()">RIPROVA</button>
+        </div>
+    </div>
+
+    <!-- SPECS MODAL (Shown on correct answer) -->
+    <div class="modal-overlay" id="specs-modal">
+        <div class="specs-card">
+            <div class="specs-header">
+                <div class="specs-icon">✅</div>
+                <div>
+                    <p style="color: var(--success); font-weight: 600; margin-bottom: 0.2rem;">Risposta Esatta!</p>
+                    <h3 class="specs-title" id="spec-name">Nome Font</h3>
+                </div>
+            </div>
+
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Categoria</div>
+                    <div class="spec-value" id="spec-category">...</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Difficoltà</div>
+                    <div class="spec-value" id="spec-difficulty">...</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Designer</div>
+                    <div class="spec-value" id="spec-designer">...</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Anno</div>
+                    <div class="spec-value" id="spec-year">...</div>
+                </div>
+                <div class="spec-item full-width">
+                    <div class="spec-label">Personalità</div>
+                    <div class="spec-value" id="spec-personality">...</div>
+                </div>
+            </div>
+
+            <div style="text-align: right;">
+                <button class="btn-primary" onclick="nextQuestion()">Prossimo Indizio →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App State
+        let fontsData = [];
+        let currentQuestion = 0;
+        let score = 0;
+        let currentCorrectFont = null;
+        const totalQuestions = 5;
+
+        // Sample words to display
+        const words = ["Tipografia", "Design", "Estetica", "Carattere", "Forma", "Espressione", "Leggibilità", "Contrasto", "Glossario"];
+
+        // DOM Elements
+        const screens = {
+            start: document.getElementById('screen-start'),
+            quiz: document.getElementById('screen-quiz'),
+            result: document.getElementById('screen-result')
+        };
+        const errorMsg = document.getElementById('loading-error');
+        const targetWordEl = document.getElementById('target-word');
+        const optionsContainer = document.getElementById('options-container');
+        const qNumEl = document.getElementById('current-q-num');
+        const totalQEl = document.getElementById('total-q-num');
+        const scoreEl = document.getElementById('score-display');
+        const modalEl = document.getElementById('specs-modal');
+
+        async function loadFontsData() {
+            try {
+                const response = await fetch('fonts.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                fontsData = await response.json();
+                return true;
+            } catch (error) {
+                console.error("Errore nel caricamento del JSON:", error);
+                errorMsg.classList.remove('hidden');
+                return false;
+            }
+        }
+
+        async function initQuiz() {
+            const btn = document.querySelector('#screen-start button');
+            btn.textContent = "CARICAMENTO...";
+            btn.disabled = true;
+
+            const loaded = await loadFontsData();
+            if (loaded && fontsData.length >= 4) {
+                score = 0;
+                currentQuestion = 0;
+                totalQEl.textContent = totalQuestions;
+                switchScreen('quiz');
+                generateQuestion();
+            } else {
+                btn.textContent = "INIZIA L'INDAGINE";
+                btn.disabled = false;
+            }
+        }
+
+        function switchScreen(screenName) {
+            Object.values(screens).forEach(s => s.classList.add('hidden'));
+            screens[screenName].classList.remove('hidden');
+        }
+
+        function shuffleArray(array) {
+            const newArr = [...array];
+            for (let i = newArr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+            }
+            return newArr;
+        }
+
+        function generateQuestion() {
+            qNumEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+
+            // Pick 4 random fonts
+            const shuffledFonts = shuffleArray(fontsData);
+            const selectedOptions = shuffledFonts.slice(0, 4);
+            currentCorrectFont = selectedOptions[Math.floor(Math.random() * 4)];
+
+            // Set visual word
+            const randomWord = words[Math.floor(Math.random() * words.length)];
+            targetWordEl.textContent = randomWord;
+            targetWordEl.style.fontFamily = currentCorrectFont.css_family;
+
+            // Render buttons
+            optionsContainer.innerHTML = '';
+            selectedOptions.forEach(font => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = font.nome;
+                btn.onclick = () => handleAnswer(font, btn, selectedOptions);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(selectedFont, btnEl, allDisplayedFonts) {
+            const buttons = optionsContainer.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.disabled = true); // lock answers
+
+            if (selectedFont.nome === currentCorrectFont.nome) {
+                // Correct!
+                btnEl.classList.add('correct');
+                score++;
+                scoreEl.textContent = score;
+                setTimeout(() => showModal(currentCorrectFont), 500);
+            } else {
+                // Wrong!
+                btnEl.classList.add('wrong');
+                // Highlight the correct one
+                buttons.forEach(b => {
+                    if (b.textContent === currentCorrectFont.nome) {
+                        b.classList.add('correct');
+                    }
+                });
+
+                // If wrong, wait a bit then go to next question without JSON specs
+                setTimeout(() => nextQuestion(), 1500);
+            }
+        }
+
+        function showModal(fontData) {
+            // Populate modal
+            document.getElementById('spec-name').textContent = fontData.nome;
+            document.getElementById('spec-category').textContent = fontData.categoria;
+            document.getElementById('spec-designer').textContent = fontData.designer;
+            document.getElementById('spec-year').textContent = fontData.anno;
+            document.getElementById('spec-personality').textContent = fontData.personalita;
+
+            const diffEl = document.getElementById('spec-difficulty');
+            diffEl.textContent = fontData.difficolta_riconoscimento;
+
+            // Color code difficulty
+            if (fontData.difficolta_riconoscimento === 'Facile') diffEl.style.color = 'var(--success)';
+            else if (fontData.difficolta_riconoscimento === 'Difficile') diffEl.style.color = 'var(--error)';
+            else diffEl.style.color = 'var(--primary)';
+
+            modalEl.classList.add('active');
+        }
+
+        function nextQuestion() {
+            modalEl.classList.remove('active');
+            currentQuestion++;
+
+            if (currentQuestion < totalQuestions) {
+                setTimeout(generateQuestion, 300); // slight delay for smooth transition
+            } else {
+                setTimeout(showResults, 300);
+            }
+        }
+
+        function showResults() {
+            document.getElementById('final-score').textContent = score;
+            switchScreen('result');
+        }
+
+        function resetApp() {
+            switchScreen('start');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+[
+    {
+        "nome": "Helvetica",
+        "categoria": "Sans-serif",
+        "designer": "Max Miedinger",
+        "anno": "1957",
+        "personalita": "Neutrale, Pulito, Moderno",
+        "difficolta_riconoscimento": "Media",
+        "css_family": "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    },
+    {
+        "nome": "Baskerville",
+        "categoria": "Serif (Transitional)",
+        "designer": "John Baskerville",
+        "anno": "1757",
+        "personalita": "Elegante, Formale, Autorevole",
+        "difficolta_riconoscimento": "Difficile",
+        "css_family": "Baskerville, 'Libre Baskerville', serif"
+    },
+    {
+        "nome": "Franklin Gothic",
+        "categoria": "Sans-serif",
+        "designer": "Morris Fuller Benton",
+        "anno": "1902",
+        "personalita": "Solido, Assertivo, Editoriale",
+        "difficolta_riconoscimento": "Media",
+        "css_family": "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+    },
+    {
+        "nome": "Times New Roman",
+        "categoria": "Serif (Transitional)",
+        "designer": "Victor Lardent",
+        "anno": "1931",
+        "personalita": "Tradizionale, Affidabile, Accademico",
+        "difficolta_riconoscimento": "Facile",
+        "css_family": "'Times New Roman', Times, serif"
+    },
+    {
+        "nome": "Arial",
+        "categoria": "Sans-serif",
+        "designer": "Robin Nicholas & Patricia Saunders",
+        "anno": "1982",
+        "personalita": "Funzionale, Pratico, Onnipresente",
+        "difficolta_riconoscimento": "Facile",
+        "css_family": "Arial, Helvetica, sans-serif"
+    },
+    {
+        "nome": "Courier New",
+        "categoria": "Monospace",
+        "designer": "Howard Kettler",
+        "anno": "1955",
+        "personalita": "Meccanico, Tecnico, Nostalgico",
+        "difficolta_riconoscimento": "Facile",
+        "css_family": "'Courier New', Courier, monospace"
+    },
+    {
+        "nome": "Comic Sans MS",
+        "categoria": "Casual Script",
+        "designer": "Vincent Connare",
+        "anno": "1994",
+        "personalita": "Giocoso, Informale, Infantile",
+        "difficolta_riconoscimento": "Facile",
+        "css_family": "'Comic Sans MS', 'Comic Sans', cursive"
+    },
+    {
+        "nome": "Pacifico",
+        "categoria": "Script",
+        "designer": "Vernon Adams",
+        "anno": "2011",
+        "personalita": "Divertente, Rilassato, Vintage (Surf anni '50)",
+        "difficolta_riconoscimento": "Facile",
+        "css_family": "'Pacifico', cursive"
+    },
+    {
+        "nome": "Futura",
+        "categoria": "Geometric Sans-serif",
+        "designer": "Paul Renner",
+        "anno": "1927",
+        "personalita": "Moderno, Geometrico, Avanguardista",
+        "difficolta_riconoscimento": "Media",
+        "css_family": "Futura, 'Trebuchet MS', Arial, sans-serif"
+    },
+    {
+        "nome": "Forma",
+        "categoria": "Neo-Grotesque Sans-serif",
+        "designer": "Aldo Novarese",
+        "anno": "1968",
+        "personalita": "Razionale, Pulito, Svizzero-Italiano",
+        "difficolta_riconoscimento": "Difficile",
+        "css_family": "'Forma DJR Text', Helvetica, sans-serif"
+    }
+]
