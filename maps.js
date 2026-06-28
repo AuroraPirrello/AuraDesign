@@ -1,0 +1,352 @@
+export default {
+  "trainingGrounds": {
+    "name": "Training Grounds",
+    "world": {
+      "width": 1200,
+      "height": 800
+    },
+    "obstacles": [
+      {
+        "x": 80,
+        "y": 40,
+        "width": 1120,
+        "height": 80,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 60,
+        "y": 120,
+        "width": 120,
+        "height": 140,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 340,
+        "y": 120,
+        "width": 200,
+        "height": 180,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 680,
+        "y": 120,
+        "width": 60,
+        "height": 180,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 540,
+        "y": 120,
+        "width": 140,
+        "height": 140,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 740,
+        "y": 360,
+        "width": 80,
+        "height": 80,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 980,
+        "y": 360,
+        "width": 80,
+        "height": 60,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 40,
+        "y": 260,
+        "width": 100,
+        "height": 200,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 80,
+        "y": 460,
+        "width": 20,
+        "height": 300,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 100,
+        "y": 720,
+        "width": 400,
+        "height": 80,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 700,
+        "y": 720,
+        "width": 500,
+        "height": 80,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 1100,
+        "y": 120,
+        "width": 100,
+        "height": 660,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0
+      },
+      {
+        "x": 180,
+        "y": 120,
+        "width": 160,
+        "height": 120,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Fuori è tutto ok. Ma non vuoi uscire.",
+          "Non uscire.",
+          "NO."
+        ],
+        "interactionType": "proximity"
+      },
+      {
+        "x": 220,
+        "y": 300,
+        "width": 60,
+        "height": 60,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "È la seconda volta che ci provi.",
+          "La seconda."
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 820,
+        "y": 120,
+        "width": 160,
+        "height": 140,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Non c'è nessun riflesso.",
+          "Provi a vederti ma non ci riesci.",
+          "L",
+          "L",
+          "L"
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 740,
+        "y": 280,
+        "width": 320,
+        "height": 80,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Ci sono dei fogli sparsi."
+        ],
+        "interactionType": "proximity"
+      },
+      {
+        "x": 860,
+        "y": 320,
+        "width": 40,
+        "height": 20,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Resta con noi.",
+          "Quanti siamo?"
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 920,
+        "y": 300,
+        "width": 40,
+        "height": 20,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Non puoi scappare da te stesso.",
+          "Quanti siamo?"
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 960,
+        "y": 320,
+        "width": 20,
+        "height": 20,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "...",
+          "Quanti siamo?"
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 800,
+        "y": 300,
+        "width": 20,
+        "height": 40,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Non puoi uscire dalla tua testa.",
+          "Quanti siamo?"
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 840,
+        "y": 300,
+        "width": 40,
+        "height": 20,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Non puoi eliminare i tuoi pensieri.",
+          "Quanti siamo?"
+        ],
+        "interactionType": "click"
+      },
+      {
+        "x": 100,
+        "y": 560,
+        "width": 180,
+        "height": 140,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Non c'è niente qui."
+        ],
+        "interactionType": "proximity"
+      },
+      {
+        "x": 160,
+        "y": 300,
+        "width": 320,
+        "height": 160,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Non puoi dormire."
+        ],
+        "interactionType": "proximity"
+      },
+      {
+        "x": 540,
+        "y": 260,
+        "width": 160,
+        "height": 120,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "isInteraction": true,
+        "interactionText": [
+          "Ti servono tre numeri"
+        ],
+        "interactionType": "proximity",
+        "usePassword": true,
+        "correctPassword": "257",
+        "unlockTargetId": "porta1"
+      },
+      {
+        "x": 500,
+        "y": 580,
+        "width": 200,
+        "height": 220,
+        "fillColor": "#4a5568",
+        "strokeColor": "transparent",
+        "fillAlpha": 0,
+        "id": "porta1",
+        "isWinBlocker": true
+      }
+    ],
+    "spawnPoints": [
+      {
+        "x": 120,
+        "y": 120
+      },
+      {
+        "x": 1080,
+        "y": 120
+      },
+      {
+        "x": 120,
+        "y": 680
+      },
+      {
+        "x": 1080,
+        "y": 680
+      },
+      {
+        "x": 600,
+        "y": 80
+      },
+      {
+        "x": 600,
+        "y": 720
+      }
+    ],
+    "visuals": {
+      "clearColor": "#05070a",
+      "gridColor": "rgba(255, 255, 255, 0.05)",
+      "gridSize": 80,
+      "obstacleColor": "#4a5568",
+      "obstacleStroke": "#2d3748",
+      "worldBorderColor": "rgba(255,255,255,0.2)",
+      "cameraLerp": 0.12,
+      "obstacleSprite": null,
+      "backgroundSprite": "uploads/map-1774545294398-3634deceb4b7.png",
+      "backgroundTileSize": 512,
+      "backgroundMode": "coverWorld"
+    }
+  }
+};
