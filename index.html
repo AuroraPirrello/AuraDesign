@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraDesign</title>
+    <title>Aurora Pirrello | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,17 +14,14 @@
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
         }
-
         /* Hide scrollbar for menu when open */
         .no-scroll {
             overflow: hidden;
         }
-
         /* Hide scrollbar for Chrome, Safari and Opera */
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
-
         /* Hide scrollbar for IE, Edge and Firefox */
         .hide-scrollbar {
             -ms-overflow-style: none;
@@ -33,40 +29,31 @@
             scrollbar-width: none;
             /* Firefox */
         }
-
         /* Custom Scrollbar (kept for other elements if needed) */
         .custom-scrollbar::-webkit-scrollbar {
             height: 12px;
         }
-
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 6px;
         }
-
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #000;
             border-radius: 6px;
             border: 3px solid #FAD6D3;
         }
-
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #f8c1bc;
         }
-
-
-
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .marquee-container {
             overflow: hidden;
             width: 100%;
             display: flex;
             /* Ensure container handles the track */
         }
-
         .marquee-track {
             display: flex;
             white-space: nowrap;
@@ -74,14 +61,12 @@
             width: max-content;
             animation: marquee 15s linear infinite;
         }
-
         .divider-track {
             display: flex;
             white-space: nowrap;
             width: max-content;
             animation: marquee 60s linear infinite;
         }
-
         .marquee-item {
             font-size: 18vw;
             font-weight: 900;
@@ -89,18 +74,15 @@
             padding-right: 0.2em;
             /* Spacing between repeats */
         }
-
         @keyframes marquee {
             0% {
                 transform: translateX(0);
             }
-
             100% {
                 transform: translateX(-50%);
                 /* Move by half the width (since we have 2 items: original + duplicate) */
             }
         }
-
         #canvas-container {
             position: absolute;
             top: 0;
@@ -112,198 +94,191 @@
             pointer-events: none;
             /* Let clicks pass through */
         }
-
         .lang-en.hidden,
         .lang-it.hidden {
             display: none !important;
         }
-
-        /* Folder Stack Styles */
-        .folder-stack {
+        /* Vertical Project List Styles (Pink Theme) */
+        .projects-section {
             position: relative;
             width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            height: 600px;
-            margin-top: 50px;
-        }
-
-        .folder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border-radius: 40px 40px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            overflow: visible;
-            /* To allow tab to pop up nicely */
-            border: 3px solid black;
-        }
-
-        .folder-tab {
-            position: absolute;
-            top: -45px;
-            height: 48px;
-            padding: 10px 40px;
-            border-radius: 25px 25px 0 0;
-            font-weight: 900;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
+            min-height: 100vh;
+            background-color: #FAD6D3;
             display: flex;
             align-items: center;
-            border: 3px solid black;
-            border-bottom: none;
-            white-space: nowrap;
-        }
-
-        .folder-content {
-            flex-grow: 1;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            padding: 120px 24px;
+            border-bottom: 3px solid #000000;
         }
-
-        .folder-title {
-            font-size: 8vw;
-            line-height: 0.9;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
+        .project-list-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .project-list-header {
+            text-align: center;
             margin-bottom: 20px;
         }
-
-        /* Pink Folders */
-        .folder-pink {
-            background-color: #FAD6D3;
-            color: black;
+        .project-list-header h2 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            margin-bottom: 10px;
         }
-
-        .folder-pink .folder-tab {
-            background-color: #FAD6D3;
-            color: black;
+        .project-list-header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
         }
-
-        /* Black Folders */
-        .folder-black {
-            background-color: #000;
+        .project-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-list-item {
+            border-bottom: 2px solid #000000;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .project-list-item:first-child {
+            border-top: 2px solid #000000;
+        }
+        .item-main-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .item-title-group {
+            display: flex;
+            align-items: baseline;
+            gap: 30px;
+        }
+        .item-num {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #000000;
+            opacity: 0.4;
+            font-family: 'Outfit', sans-serif;
+        }
+        .item-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* Hover indicator arrow */
+        .item-arrow {
+            font-size: 2.5rem;
+            color: #000000;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .item-details-row {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-left: 60px;
+        }
+        
+        @media (min-width: 768px) {
+            .item-details-row {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        .item-desc {
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.7);
+            max-width: 600px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+        .item-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
             color: #FAD6D3;
+            background-color: #000000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            width: fit-content;
+            border: 2px solid #000000;
+            transition: all 0.3s ease;
+            margin-top: 15px;
         }
-
-        .folder-black .folder-tab {
-            background-color: #000;
-            color: #FAD6D3;
+        .item-link:hover {
+            background-color: transparent;
+            color: #000000;
         }
-
-        /* Staggered Tabs - More spread out */
-        .folder:nth-child(1) .folder-tab {
-            left: 0%;
+        /* Hover Focus Effects */
+        .project-list:hover .project-list-item {
+            opacity: 0.25;
         }
-
-        .folder:nth-child(2) .folder-tab {
-            left: 26%;
+        .project-list .project-list-item:hover {
+            opacity: 1;
+            padding: 50px 0;
         }
-
-        .folder:nth-child(3) .folder-tab {
-            left: 52%;
+        .project-list-item:hover .item-title {
+            transform: translateX(10px);
         }
-
-        .folder:nth-child(4) .folder-tab {
-            left: 78%;
+        .project-list-item:hover .item-arrow {
+            opacity: 1;
+            transform: translateX(0);
         }
-
-        /* Stacked Offsets - Mimicking a real stack */
-        .folder:nth-child(1) {
-            transform: translateY(0px);
-            z-index: 1;
+        .project-list-item:hover .item-details-row {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 10px;
         }
-
-        .folder:nth-child(2) {
-            transform: translateY(20px);
-            z-index: 2;
-        }
-
-        .folder:nth-child(3) {
-            transform: translateY(40px);
-            z-index: 3;
-        }
-
-        .folder:nth-child(4) {
-            transform: translateY(60px);
-            z-index: 4;
-        }
-
-        /* Interaction - Active folder comes to front and down */
-        .folder.active {
-            transform: translateY(80px) !important;
-            z-index: 10 !important;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
+        /* Mobile adjustments */
         @media (max-width: 768px) {
-            .folder-stack {
-                height: 360px;
-                margin-top: 60px;
+            .project-list-header h2 {
+                font-size: 3.2rem;
+                letter-spacing: -2px;
             }
-
-            .folder-tab {
-                padding: 6px 12px;
-                font-size: 9px;
-                top: -32px;
-                height: 34px;
-                letter-spacing: 1px;
-            }
-
-            .folder-content {
-                padding: 30px 20px;
-            }
-
-            .folder-title {
-                font-size: 13vw;
+            .item-title {
+                font-size: 2rem;
                 letter-spacing: -1px;
             }
-
-            /* Tab positions tighter to avoid overflow */
-            .folder:nth-child(1) .folder-tab { left: 0%; }
-            .folder:nth-child(2) .folder-tab { left: 25%; }
-            .folder:nth-child(3) .folder-tab { left: 50%; }
-            .folder:nth-child(4) .folder-tab { left: 67%; }
-
-            /* Smaller stack offsets */
-            .folder:nth-child(2) { transform: translateY(12px); }
-            .folder:nth-child(3) { transform: translateY(24px); }
-            .folder:nth-child(4) { transform: translateY(36px); }
-
-            .folder.active {
-                transform: translateY(50px) !important;
+            .item-num {
+                font-size: 1.1rem;
             }
-        }
-
-        @media (max-width: 400px) {
-            .folder-stack {
-                height: 300px;
-                margin-top: 50px;
+            .item-arrow {
+                font-size: 1.5rem;
             }
-
-            .folder-tab {
-                font-size: 7.5px;
-                padding: 5px 8px;
-                letter-spacing: 0.5px;
+            .item-details-row {
+                padding-left: 0;
             }
-
-            .folder-title {
-                font-size: 14vw;
+            .project-list-item:hover {
+                padding: 40px 0;
             }
-
-            .folder:nth-child(4) .folder-tab { left: 63%; }
+            .item-desc {
+                font-size: 0.95rem;
+            }
         }
     </style>
     <!-- Three.js Libraries -->
@@ -311,20 +286,16 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
     <script src="language-switcher.js"></script>
 </head>
-
 <body class="bg-black text-gray-900">
-
     <!-- Header -->
     <header
         class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center text-[#FAD6D3] mix-blend-difference">
         <div class="text-lg font-bold tracking-widest uppercase">
-            AuraDesign
+            AuroraPirrello
         </div>
         <div class="flex items-center space-x-12">
             <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest">
-                <a href="#about" class="hover:text-gray-500 transition-colors uppercase">
-                    <span class="lang-it">Chi sono</span>
-                    <span class="lang-en hidden">About me</span>
+                <a href="#about" class="hover:text-gray-500 transition-colors uppercase">About</a>
                 <a href="#projects" class="hover:text-gray-500 transition-colors uppercase">
                     <span class="lang-it">Progetti</span>
                     <span class="lang-en hidden">Projects</span>
@@ -342,15 +313,12 @@
         </div>
         <!-- Mobile menu placeholder or keep simple for now as requested -->
     </header>
-
     <!-- Side Menu Removed -->
-
     <!-- Hero Section -->
     <section
         class="relative w-full h-screen flex flex-col justify-center items-center text-center overflow-hidden bg-black">
         <!-- 3D Canvas Container -->
         <div id="canvas-container"></div>
-
         <div class="relative z-10 w-full flex flex-col items-center">
             <!-- Marquee Text -->
             <div class="marquee-container">
@@ -359,7 +327,6 @@
                     <span class="marquee-item leading-none tracking-tighter text-[#FAD6D3]">AURADESIGN</span>
                 </div>
             </div>
-
             <!-- Content Link/Subtext -->
             <div class="mt-4 px-4 w-full">
                 <p class="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-[#FAD6D3]">
@@ -367,13 +334,11 @@
                 </p>
             </div>
         </div>
-
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 animate-bounce text-[#FAD6D3] z-20">
             <i class="fas fa-chevron-down text-2xl"></i>
         </div>
     </section>
-
     <!-- Scrolling Divider Section -->
     <div class="relative w-full bg-[#FAD6D3] py-6 md:py-10 z-30 flex items-center justify-center overflow-hidden">
         <div class="w-full h-12 md:h-16 bg-black flex items-center overflow-hidden shadow-md border-y-2 border-black">
@@ -418,78 +383,113 @@
             </div>
         </div>
     </div>
-
-    <!-- Works Section -->
-    <section id="projects" class="min-h-screen flex flex-col justify-center pt-24 pb-48 md:pb-64 z-20 relative bg-[#FAD6D3]">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
-            <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-black">
-                <span class="lang-it">PROGETTI</span>
-                <span class="lang-en hidden">PROJECTS</span>
-            </h2>
-
-            <div class="folder-stack" id="folderStack">
-                <!-- Folder 1: INDUSTRIAL DESIGN -->
-                <div class="folder folder-pink active" data-href="industrial-design.html"
-                    onclick="handleFolderClick(this)">
-                    <div class="folder-tab">INDUSTRIAL DESIGN</div>
-                    <div class="folder-content">
-                        <div class="folder-title">INDUSTRIAL<br>DESIGN</div>
-                        <p class="text-xl opacity-60 italic font-medium">
-                            <span class="lang-it">Forma e funzione.</span>
-                            <span class="lang-en hidden">Form and function.</span>
+       <!-- Works Section (Vertical Minimal List) -->
+    <section id="projects" class="projects-section">
+        <div class="project-list-container">
+            <div class="project-list-header">
+                <h2>
+                    <span class="lang-it">Progetti</span>
+                    <span class="lang-en hidden">Projects</span>
+                </h2>
+            </div>
+            
+            <div class="project-list">
+                <!-- Item 1: INDUSTRIAL DESIGN -->
+                <div class="project-list-item" onclick="window.location.href='industrial-design.html'">
+                    <div class="item-main-row">
+                        <div class="item-title-group">
+                            <span class="item-num">01</span>
+                            <h3 class="item-title">Industrial Design</h3>
+                        </div>
+                        <span class="item-arrow">→</span>
+                    </div>
+                    <div class="item-details-row">
+                        <p class="item-desc">
+                            <span class="lang-it">Sperimentazione materica, modellazione 3D e prototipazione fisica di veri prodotti di industrial design (come ARTINOVA, lampada esposta al Salone del Mobile 2026).</span>
+                            <span class="lang-en hidden">Material experimentation, 3D modeling, and physical prototyping of real industrial design products (such as ARTINOVA, lamp exhibited at Salone del Mobile 2026).</span>
                         </p>
+                        <a href="industrial-design.html" class="item-link" onclick="event.stopPropagation();">
+                            <span class="lang-it">Esplora</span>
+                            <span class="lang-en hidden">Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Folder 2: URBAN DESIGN -->
-                <div class="folder folder-black" data-href="urban-design.html" onclick="handleFolderClick(this)">
-                    <div class="folder-tab">URBAN DESIGN</div>
-                    <div class="folder-content">
-                        <div class="folder-title">URBAN<br>DESIGN</div>
-                        <p class="text-xl opacity-60 italic font-medium">
-                            <span class="lang-it">Spazi collettivi.</span>
-                            <span class="lang-en hidden">Collective spaces.</span>
+                <!-- Item 2: URBAN DESIGN -->
+                <div class="project-list-item" onclick="window.location.href='urban-design.html'">
+                    <div class="item-main-row">
+                        <div class="item-title-group">
+                            <span class="item-num">02</span>
+                            <h3 class="item-title">Urban Design</h3>
+                        </div>
+                        <span class="item-arrow">→</span>
+                    </div>
+                    <div class="item-details-row">
+                        <p class="item-desc">
+                            <span class="lang-it">Riqualificazione e progettazione di spazi urbani condivisi, concentrandosi sull'interazione tra persone e architettura per creare connessioni reali e durature.</span>
+                            <span class="lang-en hidden">Redevelopment and design of shared urban spaces, focusing on the interaction between people and architecture to build real and lasting connections.</span>
                         </p>
+                        <a href="urban-design.html" class="item-link" onclick="event.stopPropagation();">
+                            <span class="lang-it">Esplora</span>
+                            <span class="lang-en hidden">Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Folder 3: GRAPHIC DESIGN -->
-                <div class="folder folder-pink" data-href="graphic-design.html" onclick="handleFolderClick(this)">
-                    <div class="folder-tab">GRAPHIC DESIGN</div>
-                    <div class="folder-content">
-                        <div class="folder-title">GRAPHIC<br>DESIGN</div>
-                        <p class="text-xl opacity-60 italic font-medium">
-                            <span class="lang-it">Narrazioni visive.</span>
-                            <span class="lang-en hidden">Visual narratives.</span>
+                <!-- Item 3: GRAPHIC DESIGN -->
+                <div class="project-list-item" onclick="window.location.href='graphic-design.html'">
+                    <div class="item-main-row">
+                        <div class="item-title-group">
+                            <span class="item-num">03</span>
+                            <h3 class="item-title">Graphic Design</h3>
+                        </div>
+                        <span class="item-arrow">→</span>
+                    </div>
+                    <div class="item-details-row">
+                        <p class="item-desc">
+                            <span class="lang-it">Ideazione di brand identity, progettazione di manifesti e impaginazione editoriale volti a catturare l'attenzione ed esprimere concetti profondi con la tipografia e il colore.</span>
+                            <span class="lang-en hidden">Brand identity concept creation, poster design, and editorial layout aimed at capturing attention and expressing deep concepts using typography and color.</span>
                         </p>
+                        <a href="graphic-design.html" class="item-link" onclick="event.stopPropagation();">
+                            <span class="lang-it">Esplora</span>
+                            <span class="lang-en hidden">Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Folder 4: WEB DESIGN -->
-                <div class="folder folder-black" data-href="web-design.html" onclick="handleFolderClick(this)">
-                    <div class="folder-tab">WEB DESIGN</div>
-                    <div class="folder-content">
-                        <div class="folder-title">WEB<br>DESIGN</div>
-                        <p class="text-xl opacity-60 italic font-medium">
-                            <span class="lang-it">Collaborazione creativa.</span>
-                            <span class="lang-en hidden">Creative collaboration.</span>
+                <!-- Item 4: WEB DESIGN -->
+                <div class="project-list-item" onclick="window.location.href='web-design.html'">
+                    <div class="item-main-row">
+                        <div class="item-title-group">
+                            <span class="item-num">04</span>
+                            <h3 class="item-title">Web Design</h3>
+                        </div>
+                        <span class="item-arrow">→</span>
+                    </div>
+                    <div class="item-details-row">
+                        <p class="item-desc">
+                            <span class="lang-it">Sviluppo di landing page interattive, giochi web ed esperienze web immersive realizzate combinando rigore di codice (HTML5/CSS3/JS) e prototipazione avanzata (Figma).</span>
+                            <span class="lang-en hidden">Development of interactive landing pages, web games, and immersive web experiences created by combining code discipline (HTML5/CSS3/JS) and advanced prototyping (Figma).</span>
                         </p>
+                        <a href="web-design.html" class="item-link" onclick="event.stopPropagation();">
+                            <span class="lang-it">Esplora</span>
+                            <span class="lang-en hidden">Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about" class="min-h-screen flex flex-col justify-center py-24 z-20 relative bg-black">
         <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
-            <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-[#FAD6D3]">ABOUT ME</h2>
-               
+            <h2 class="text-5xl font-bold mb-16 text-center tracking-tight text-[#FAD6D3]">About Me</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-                <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 min-h-[300px] md:min-h-0 border-2 border-gray-800">
-                    <img src="aury.png" alt="Aurora Pirrello" class="w-full h-full object-cover">
+                <div
+                    class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 min-h-[300px] md:min-h-0 border-2 border-gray-800">
+                    <img src="aurora.JPG" alt="Aurora Pirrello" class="w-full h-full object-cover">
                 </div>
-
                 <!-- Text Column -->
                 <div class="space-y-6 flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-white">
@@ -521,7 +521,24 @@
             </div>
         </div>
     </section>
-
+    <!-- Divider Section -->
+    <div class="relative w-full bg-[#FAD6D3] py-4 z-30 flex items-center justify-center overflow-hidden border-y-2 border-black">
+        <div class="divider-track flex whitespace-nowrap text-black font-black tracking-widest text-sm md:text-base uppercase">
+            <span class="px-4">✦ ART & DESIGN</span>
+            <span class="px-4">✦ ARCHITECTURE</span>
+            <span class="px-4">✦ CODE</span>
+            <span class="px-4">✦ CONCEPT DEVELOPER</span>
+            <span class="px-4">✦ GRAPHIC DESIGN</span>
+            <span class="px-4">✦ VISUAL ART</span>
+            <!-- duplicate for seamless loop -->
+            <span class="px-4">✦ ART & DESIGN</span>
+            <span class="px-4">✦ ARCHITECTURE</span>
+            <span class="px-4">✦ CODE</span>
+            <span class="px-4">✦ CONCEPT DEVELOPER</span>
+            <span class="px-4">✦ GRAPHIC DESIGN</span>
+            <span class="px-4">✦ VISUAL ART</span>
+        </div>
+    </div>
     <!-- Personal Skills Section -->
     <section class="py-24 md:py-32 bg-black text-[#FAD6D3] relative z-20">
         <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
@@ -532,34 +549,33 @@
                 </div>
                 <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">ADOBE
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">ADOBE
                         PHOTOSHOP</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">ADOBE
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">ADOBE
                         PREMIERE PRO</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">ADOBE
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">ADOBE
                         ILLUSTRATOR</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">ADOBE
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">ADOBE
                         INDESIGN</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">ANTIGRAVITY</span>
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">ANTIGRAVITY</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">FIGMA</span>
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">FIGMA</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">BLENDER</span>
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">BLENDER</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">ARCHICAD</span>
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">ARCHICAD</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">AUTOCAD</span>
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">AUTOCAD</span>
                     <span
-                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest hover:bg-[#FAD6D3] hover:text-black transition-colors duration-300 cursor-default text-center">TWINMOTION</span>
+                        class="px-4 py-3 md:px-6 md:py-4 border-2 border-[#FAD6D3] rounded-full text-base md:text-lg lg:text-xl font-bold tracking-widest cursor-default text-center">TWINMOTION</span>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer id="contact" class="bg-[#FAD6D3] text-black py-16">
         <div
@@ -571,7 +587,6 @@
                     <span class="lang-en hidden">Creating tomorrow, one pixel at a time.</span>
                 </p>
             </div>
-
             <div class="flex space-x-12 text-sm font-bold tracking-widest uppercase">
                 <a href="https://www.instagram.com/aurasdesign/" target="_blank"
                     class="hover:opacity-50 transition-opacity">Instagram</a>
@@ -584,35 +599,13 @@
             &copy; 2026 Aurora Pirrello. All rights reserved.
         </div>
     </footer>
-
-    <!-- Script removed -->
-    <script>
-        function handleFolderClick(element) {
-            if (element.classList.contains('active')) {
-                // If already active, navigate to project page
-                window.location.href = element.getAttribute('data-href');
-            } else {
-                // If not active, bring to front
-                const folders = document.querySelectorAll('.folder');
-                folders.forEach(f => f.classList.remove('active'));
-                element.classList.add('active');
-            }
-        }
-    </script>
+    <!-- Scripts -->
 </body>
-
 </html>
-        
-           
-               
-              
-                    
-                  
 
-
-
-
-           
+      
+   
+                        
 
      
            
