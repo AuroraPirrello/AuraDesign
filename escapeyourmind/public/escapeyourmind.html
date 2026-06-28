@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Escape your mind</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="joinScreen" class="overlay">
+    <div class="panel">
+      <div id="joinStep1">
+        <h1 style="font-size: 22px; line-height: 1.3; margin-bottom: 20px;">Usa WASD per muoversi, SPAZIO e CLICK per
+          interagire con la stanza.</h1>
+        <p class="subtitle">chi sta giocando?</p>
+        <form id="joinForm">
+          <label for="nickname">Inserisci il tuo nome</label>
+          <input id="nickname" maxlength="18" required />
+          <button type="submit">entri?</button>
+        </form>
+      </div>
+
+      <div id="joinStep2" class="hidden">
+        <h1>Sei sicuro di giocare?</h1>
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button id="confirmYesBtn" style="flex: 1;">Sì</button>
+          <button id="confirmNoBtn" style="flex: 1; background: var(--hp-bad); color: white;">No</button>
+        </div>
+      </div>
+
+      <div id="joinStep3" class="hidden">
+        <h1>Obiettivo</h1>
+        <p class="subtitle" style="font-size: 18px; color: var(--text); margin-top: 20px;">Trova il modo di uscire da
+          qui</p>
+        <button id="startGameBtn" style="width: 100%; margin-top: 20px;">Comincia</button>
+      </div>
+
+      <div id="joinStepError" class="hidden">
+        <h1>Dobbiamo andarcene, riprova</h1>
+        <button id="retryBtn" style="width: 100%; margin-top: 20px;">Riprova</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+  <div id="deathOverlay" class="deathOverlay hidden">YOU DIED</div>
+
+  <!-- Schermata Vittoria -->
+  <div id="victoryScreen"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:200; backdrop-filter:blur(12px); align-items:center; justify-content:center; flex-direction:column; text-align:center;">
+    <h1 style="font-size:4rem; color:#ffd166; margin-bottom:1rem; text-shadow:0 0 20px rgba(255,209,102,0.4);">HAI
+      VINTO!</h1>
+    <p style="font-size:1.5rem; color:#fff; margin-bottom:2rem; opacity:0.8;">Hai trovato la via d'uscita.</p>
+    <button onclick="location.reload()"
+      style="padding:15px 40px; font-size:1.2rem; background:#4a5568; color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold; transition:transform 0.2s;">Rigioca</button>
+  </div>
+
+  <div id="hud" class="hud hidden">
+    <div id="statusLabel" class="status">WASD per muoversi e SPAZIO per interagire</div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="js/localSocket.js"></script>
+</body>
+
+</html>
