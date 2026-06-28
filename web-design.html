@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +13,88 @@
             overflow-x: hidden;
         }
         .lang-en.hidden, .lang-it.hidden { display: none !important; }
+        /* Kinetic Typography CSS for Typo-poetries */
+        @keyframes vibrate-anim {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2px, -1px) rotate(-0.5deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-0.5deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(0deg); }
+        }
+        
+        .typo-vibrate {
+            animation: vibrate-anim 0.25s infinite;
+            display: inline-block;
+        }
+        @keyframes collapse-letter {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; filter: blur(0); }
+            40% { transform: translateY(0) rotate(0deg); opacity: 1; filter: blur(0); }
+            60% { transform: translateY(120px) rotate(15deg); opacity: 0; filter: blur(4px); }
+            75% { transform: translateY(-80px); opacity: 0; filter: blur(10px); }
+            90%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; filter: blur(0); }
+        }
+        .typo-collapse {
+            display: inline-flex;
+            gap: 2px;
+        }
+        .typo-collapse span {
+            display: inline-block;
+        }
+        
+        .typo-collapse span:nth-child(1) { animation: collapse-letter 4s infinite 0.1s ease-in-out; }
+        .typo-collapse span:nth-child(2) { animation: collapse-letter 4s infinite 0.2s ease-in-out; }
+        .typo-collapse span:nth-child(3) { animation: collapse-letter 4s infinite 0.3s ease-in-out; }
+        .typo-collapse span:nth-child(4) { animation: collapse-letter 4s infinite 0.4s ease-in-out; }
+        .typo-collapse span:nth-child(5) { animation: collapse-letter 4s infinite 0.5s ease-in-out; }
+        .typo-collapse span:nth-child(6) { animation: collapse-letter 4s infinite 0.6s ease-in-out; }
+        .typo-collapse span:nth-child(7) { animation: collapse-letter 4s infinite 0.7s ease-in-out; }
+        .typo-collapse span:nth-child(8) { animation: collapse-letter 4s infinite 0.8s ease-in-out; }
+        @keyframes fracture-top {
+            0%, 20%, 100% { transform: translate(0, 0); }
+            40%, 80% { transform: translate(-10px, -8px); }
+        }
+        @keyframes fracture-bottom {
+            0%, 20%, 100% { transform: translate(0, 0); }
+            40%, 80% { transform: translate(10px, 8px); }
+        }
+        .fracture-container {
+            position: relative;
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #000;
+            line-height: 1;
+            height: 60px;
+            width: 280px;
+        }
+        .fracture-part {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fracture-top {
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 65%);
+            animation: fracture-top 3s infinite ease-in-out;
+        }
+        .fracture-bottom {
+            clip-path: polygon(0 66%, 100% 46%, 100% 100%, 0 100%);
+            animation: fracture-bottom 3s infinite ease-in-out;
+            color: #7f7f7f;
+        }
     </style>
     <script src="language-switcher.js"></script>
 </head>
-
 <body class="bg-black text-[#FAD6D3]">
     <header
         class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center text-[#FAD6D3] mix-blend-difference">
@@ -42,10 +119,8 @@
                 <span class="opacity-30">|</span>
                 <a href="#" class="lang-toggle hover:text-white transition-colors" data-lang="en">EN</a>
             </div>
-
         </div>
     </header>
-
     <section class="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tight uppercase leading-none text-center">
             WEB<br />DESIGN</h1>
@@ -59,94 +134,511 @@
                 <!-- Info Column (Sticky) -->
                 <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
                     <div>
-                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">Progetto 1
-                        </h2>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">Escape your mind</h2>
                         <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
                     </div>
-
                     <div>
                         <h4
                             class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
                             <span class="lang-it">Descrizione</span>
                             <span class="lang-en hidden">Description</span>
                         </h4>
-                        <p class="text-gray-300 text-lg leading-relaxed">
-                            <span class="lang-it">COMING SOON</span>
-                            <span class="lang-en hidden">COMING SOON</span>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">Escape your mind è un'esperienza web interattiva in stile "escape room". Sviluppato interamente con tecnologie web standard (HTML5, CSS3, JavaScript Vanilla) per il front-end e Node.js con Socket.IO per la gestione in tempo reale. Il giocatore si ritrova all'interno di stanze misteriose dove deve muoversi utilizzando la tastiera e interagire con l'ambiente circostante per risolvere enigmi e trovare la via d'uscita.</span>
+                            <span class="lang-en hidden">Escape your mind is an interactive escape-room style web experience. Developed entirely with standard web technologies (HTML5, CSS3, Vanilla JavaScript) for the front-end and Node.js with Socket.IO for real-time synchronization. The player navigates through mysterious rooms using the keyboard, interacting with the environment to solve puzzles and escape.</span>
                         </p>
                     </div>
-
                     <div>
                         <h4
                             class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
                             Programmi Usati</h4>
-                        <div class="flex flex-wrap gap-3">
+                        <div class="flex flex-wrap gap-3 mb-6">
                             <span
-                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] hover:bg-[#FAD6D3] hover:text-black transition-colors cursor-default">SOFTWARE
-                                1</span>
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">HTML5 / CSS3</span>
                             <span
-                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] hover:bg-[#FAD6D3] hover:text-black transition-colors cursor-default">SOFTWARE
-                                2</span>
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">JAVASCRIPT</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">NODE.JS</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">SOCKET.IO</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">CANVAS 2D</span>
+                        </div>
+                        <div>
+                            <a href="EscapeYourMindSingleplayer/public/index.html" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3] tracking-widest uppercase text-xs">
+                                <i class="fas fa-play text-[10px] mr-1"></i>
+                                <span class="lang-it">Prova il sito</span>
+                                <span class="lang-en hidden">Visit Site</span>
+                            </a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Photos Column (Scrollable) -->
                 <div class="lg:col-span-8 flex flex-col gap-8">
                     <!-- Main Image -->
                     <div
                         class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative group border border-gray-800">
-                        <img src="RULER.PNG"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
-                            alt="Main Photo">
-                        <div
-                            class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-                            <span
-                                class="text-white font-bold uppercase tracking-widest px-6 py-3 border-2 border-white rounded-full backdrop-blur-sm pointer-events-none">Foto
-                                Principale</span>
-                        </div>
+                        <img src="EscapeYourMindSingleplayer/escape1.png"
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                            alt="Escape your mind main screenshot">
                     </div>
-
                     <!-- Secondary Images Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div
-                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 flex flex-col items-center justify-center text-gray-600 group hover:border-[#FAD6D3] transition-colors cursor-pointer">
-                            <i class="fas fa-image text-3xl mb-3 group-hover:text-[#FAD6D3] transition-colors"></i>
-                            <span
-                                class="text-sm font-bold uppercase tracking-widest group-hover:text-[#FAD6D3] transition-colors">Foto
-                                Dettaglio 1</span>
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="EscapeYourMindSingleplayer/escape2.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Detail 1">
                         </div>
                         <div
-                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 flex flex-col items-center justify-center text-gray-600 group hover:border-[#FAD6D3] transition-colors cursor-pointer">
-                            <i class="fas fa-image text-3xl mb-3 group-hover:text-[#FAD6D3] transition-colors"></i>
-                            <span
-                                class="text-sm font-bold uppercase tracking-widest group-hover:text-[#FAD6D3] transition-colors">Foto
-                                Dettaglio 2</span>
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="EscapeYourMindSingleplayer/escape3.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Detail 2">
                         </div>
-                    </div>
-
-                    <!-- Full Width Image Placeholder -->
-                    <div
-                        class="w-full h-64 md:h-96 bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 flex flex-col items-center justify-center text-gray-600 group hover:border-[#FAD6D3] transition-colors cursor-pointer">
-                        <i class="fas fa-panorama text-4xl mb-4 group-hover:text-[#FAD6D3] transition-colors"></i>
-                        <span
-                            class="text-sm font-bold uppercase tracking-widest group-hover:text-[#FAD6D3] transition-colors">Sezione
-                            Grandangolo / Planimetria</span>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Add another project separator/placeholder below just to show structure -->
-        <div class="mt-32 pt-16 border-t border-gray-900 text-center opacity-50">
-            <h3 class="text-2xl font-bold tracking-widest text-gray-600 uppercase mb-4">Prossimo Progetto</h3>
-           
+        <!-- Project 2 Setup -->
+        <div class="mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Info Column (Sticky) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">Scena WebVR</h2>
+                        <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">"Desolazione" è una scena virtuale 3D interattiva in stile post-apocalittico realizzata con A-Frame. L'utente viene immerso in un'atmosfera cinematografica drammatica con una vignetta scura, fitta nebbia cinerea e particelle fluttuanti (sabbia, cenere e braci ardenti) che simulano una tempesta. Al centro si staglia una statua colossale parzialmente sommersa, soggetta a una lenta oscillazione che simula il moto ondoso, inquadrata dal basso per accentuarne la monumentalità.</span>
+                            <span class="lang-en hidden">"Desolazione" is an interactive 3D virtual scene in a post-apocalyptic style built with A-Frame. The user is immersed in a dramatic cinematic atmosphere featuring a dark vignette, thick ash fog, and floating particles (sand, ash, and burning embers) that simulate a storm. In the center, a colossal, partially submerged statue gently sways, simulating wave motion, framed from a low angle to enhance its monumental scale.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            Programmi Usati</h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">HTML5 / CSS3</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">A-FRAME</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">ALPINE.JS</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">TAILWIND CSS</span>
+                        </div>
+                        <div>
+                            <a href="ScenaWebVR-PirrelloAurora/index.html" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3] tracking-widest uppercase text-xs">
+                                <i class="fas fa-vr-cardboard text-[10px] mr-1"></i>
+                                <span class="lang-it">Prova il sito</span>
+                                <span class="lang-en hidden">Visit Site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photos Column (Scrollable) -->
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <!-- Main Image -->
+                    <div
+                        class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative group border border-gray-800">
+                        <img src="ScenaWebVR-PirrelloAurora/desolazione1.png"
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                            alt="WebVR main view screenshot">
+                    </div>
+                    <!-- Secondary Images Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="ScenaWebVR-PirrelloAurora/desolazione2.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="WebVR detail 1">
+                        </div>
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="ScenaWebVR-PirrelloAurora/desolazione3.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="WebVR detail 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project 3 Setup -->
+        <div class="mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Info Column (Sticky) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">Font Detective</h2>
+                        <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">Font Detective è un quiz interattivo per web browser progettato per testare la conoscenza tipografica e l'attenzione ai dettagli dell'utente. I giocatori devono identificare vari tipi di font (serif, sans-serif, monospace e corsivi) a partire da singole lettere o parole e scoprire l'anatomia e la storia di ciascun carattere tipografico. Sviluppato interamente in HTML, CSS e JavaScript Vanilla, utilizza un archivio JSON locale per caricare dinamicamente le domande e le specifiche dei caratteri.</span>
+                            <span class="lang-en hidden">Font Detective is an interactive web-based quiz designed to test the user's typographical knowledge and eye for detail. Players must identify various font families (serif, sans-serif, monospace, and cursive) from single letters or words and explore the anatomy and history of each typeface. Developed entirely in HTML, CSS, and Vanilla JavaScript, it uses a local JSON database to dynamically load questions and font specifications.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            Programmi Usati</h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">HTML5 / CSS3</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">JAVASCRIPT</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">JSON</span>
+                        </div>
+                        <div>
+                            <a href="fontdetective/font-detective/index.html" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3] tracking-widest uppercase text-xs">
+                                <i class="fas fa-search text-[10px] mr-1"></i>
+                                <span class="lang-it">Prova il sito</span>
+                                <span class="lang-en hidden">Visit Site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photos Column (Scrollable) -->
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <!-- Main Image -->
+                    <div
+                        class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative group border border-gray-800">
+                        <img src="fontdetective/font-detective/font1.png?v=2"
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                            alt="Font Detective start screen">
+                    </div>
+                    <!-- Secondary Images Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="fontdetective/font-detective/font2.png?v=2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Font Detective game screen">
+                        </div>
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="fontdetective/font-detective/font3.png?v=2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Font Detective details screen">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project 4 Setup -->
+        <div class="mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Info Column (Sticky) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">RULER</h2>
+                        <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">Ruler è una landing page interattiva e satirica per un anello intelligente fantascientifico progettato per forzare la produttività ed eliminare la distrazione. Sviluppata con HTML5 e CSS3 personalizzato, la pagina presenta un design elegante, minimalista e d'impatto con contrasti netti in bianco e nero. L'esperienza d'uso è studiata per promuovere un prodotto distopico che "non controlla, accompagna" l'utente verso il proprio massimo rendimento quotidiano.</span>
+                            <span class="lang-en hidden">"Ruler" is an interactive and satirical landing page for a sci-fi smart ring designed to enforce productivity and eliminate distractions. Developed with HTML5 and custom CSS3, the page features a sleek, minimalist, high-impact design with sharp black-and-white contrasts. The user experience is tailored to pitch a dystopian product that "does not control, it accompanies" the user toward their peak daily performance.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            Programmi Usati</h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">HTML5 / CSS3</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">FIGMA</span>
+                        </div>
+                        <div>
+                            <a href="ruler/ruler.html" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3] tracking-widest uppercase text-xs">
+                                <i class="fas fa-shopping-bag text-[10px] mr-1"></i>
+                                <span class="lang-it">Prova il sito</span>
+                                <span class="lang-en hidden">Visit Site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photos Column (Scrollable) -->
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <!-- Main Image -->
+                    <div
+                        class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative group border border-gray-800">
+                        <img src="ruler/immagine1.png"
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                            alt="Ruler website mockup screenshot">
+                    </div>
+                    <!-- Secondary Images Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="ruler/immagine2.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Ruler ring detail">
+                        </div>
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="ruler/immagine3.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Ruler full landing page view">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project 5 Setup -->
+        <div class="mt-32 pt-32 border-t border-gray-900">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Info Column (Sticky) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">TAVOLE DI BASIC DESIGN</h2>
+                        <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">Tavole di Basic Design è uno studio visivo geometrico finalizzato ad allenare l'occhio e la mano ai principi fondamentali della percezione visiva. Senza l'uso di testi o immagini tradizionali, le quattro tavole esplorano prossimità, contrasto, gerarchia e spazio bianco, comunicando concetti strutturali immediati e leggibili in un secondo.</span>
+                            <span class="lang-en hidden">Basic Design Plates is a geometric visual study aimed at training the eye and hand to the core principles of visual perception. Devoid of any text or traditional imagery, the four plates explore proximity, contrast, hierarchy, and white space, conveying immediate and readable structural concepts in one second.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            Programmi Usati</h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">FIGMA</span>
+                        </div>
+                        <div>
+                            <a href="https://www.figma.com/design/Ez5Q3YXQgR9MNqwiAranJS/Tavole-di-Basic-Design-PIRRELLO-AURORA?node-id=0-1&m=dev&t=CDMXXcEuOuvtP8hv-1" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3] tracking-widest uppercase text-xs">
+                                <i class="fas fa-eye text-[10px] mr-1"></i>
+                                <span class="lang-it">Apri Progetto</span>
+                                <span class="lang-en hidden">Open Project</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photos Column (Scrollable) -->
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <!-- Main Image (Overview grid of the 4 plates) -->
+                    <div
+                        class="w-full aspect-video bg-[#fafafa] rounded-xl overflow-hidden shadow-2xl relative group border border-gray-200 flex items-center justify-center p-8">
+                        <div class="grid grid-cols-2 gap-4 w-full h-full max-w-[600px] max-h-[350px]">
+                            <!-- Preview 1 -->
+                            <div class="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center justify-center relative">
+                                <svg width="70" height="70" viewBox="0 0 100 100" class="text-black">
+                                    <circle cx="20" cy="20" r="4" fill="black" />
+                                    <circle cx="32" cy="20" r="4" fill="black" />
+                                    <circle cx="20" cy="32" r="4" fill="black" />
+                                    <circle cx="32" cy="32" r="4" fill="black" />
+                                    
+                                    <circle cx="70" cy="20" r="4" fill="black" />
+                                    <circle cx="82" cy="20" r="4" fill="black" />
+                                    <circle cx="70" cy="32" r="4" fill="black" />
+                                    <circle cx="82" cy="32" r="4" fill="black" />
+                                    <circle cx="20" cy="70" r="4" fill="black" />
+                                    <circle cx="32" cy="70" r="4" fill="black" />
+                                    <circle cx="20" cy="82" r="4" fill="black" />
+                                    <circle cx="32" cy="82" r="4" fill="black" />
+                                    <circle cx="70" cy="70" r="4" fill="black" />
+                                    <circle cx="82" cy="70" r="4" fill="black" />
+                                    <circle cx="70" cy="82" r="4" fill="black" />
+                                    <circle cx="82" cy="82" r="4" fill="black" />
+                                </svg>
+                                <span class="text-[9px] text-gray-400 mt-2 font-bold tracking-wider uppercase">Prossimità</span>
+                            </div>
+                            <!-- Preview 2 -->
+                            <div class="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center justify-center relative">
+                                <svg width="70" height="70" viewBox="0 0 100 100" class="text-black">
+                                    <rect x="15" y="15" width="20" height="20" fill="black" />
+                                    <rect x="40" y="15" width="20" height="20" fill="black" />
+                                    <rect x="15" y="40" width="20" height="20" fill="black" />
+                                    <rect x="40" y="40" width="20" height="20" fill="black" />
+                                    <g transform="rotate(45 75 75)">
+                                        <rect x="65" y="65" width="20" height="20" fill="black" />
+                                    </g>
+                                </svg>
+                                <span class="text-[9px] text-gray-400 mt-2 font-bold tracking-wider uppercase">Contrasto</span>
+                            </div>
+                            <!-- Preview 3 -->
+                            <div class="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center justify-center relative">
+                                <svg width="70" height="70" viewBox="0 0 100 100" class="text-black">
+                                    <circle cx="50" cy="50" r="22" fill="black" />
+                                    <circle cx="15" cy="15" r="4" fill="black" />
+                                    <circle cx="85" cy="15" r="4" fill="black" />
+                                    <circle cx="15" cy="85" r="4" fill="black" />
+                                    <circle cx="85" cy="85" r="4" fill="black" />
+                                </svg>
+                                <span class="text-[9px] text-gray-400 mt-2 font-bold tracking-wider uppercase">Gerarchia</span>
+                            </div>
+                            <!-- Preview 4 -->
+                            <div class="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center justify-center relative">
+                                <svg width="70" height="70" viewBox="0 0 100 100" class="text-black">
+                                    <circle cx="75" cy="25" r="4" fill="black" />
+                                </svg>
+                                <span class="text-[9px] text-gray-400 mt-2 font-bold tracking-wider uppercase">Spazio Bianco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Secondary Images Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Plate 1 Large -->
+                        <div class="w-full aspect-square bg-[#fafafa] rounded-xl overflow-hidden shadow-xl border border-gray-200 relative group flex flex-col items-center justify-center hover:border-[#FAD6D3] transition-colors cursor-pointer p-8">
+                            <svg width="180" height="180" viewBox="0 0 100 100" class="text-black transition-transform duration-300 group-hover:scale-105">
+                                <circle cx="25" cy="25" r="5" fill="black" />
+                                <circle cx="40" cy="25" r="5" fill="black" />
+                                <circle cx="25" cy="40" r="5" fill="black" />
+                                <circle cx="40" cy="40" r="5" fill="black" />
+                                
+                                <circle cx="65" cy="25" r="5" fill="black" />
+                                <circle cx="80" cy="25" r="5" fill="black" />
+                                <circle cx="65" cy="40" r="5" fill="black" />
+                                <circle cx="80" cy="40" r="5" fill="black" />
+                                <circle cx="25" cy="65" r="5" fill="black" />
+                                <circle cx="40" cy="65" r="5" fill="black" />
+                                <circle cx="25" cy="80" r="5" fill="black" />
+                                <circle cx="40" cy="80" r="5" fill="black" />
+                                <circle cx="65" cy="65" r="5" fill="black" />
+                                <circle cx="80" cy="65" r="5" fill="black" />
+                                <circle cx="65" cy="80" r="5" fill="black" />
+                                <circle cx="80" cy="80" r="5" fill="black" />
+                            </svg>
+                            <span class="text-xs text-gray-500 font-bold tracking-widest uppercase mt-4">1. Prossimità / Unità</span>
+                        </div>
+                        <!-- Plate 2 Large -->
+                        <div class="w-full aspect-square bg-[#fafafa] rounded-xl overflow-hidden shadow-xl border border-gray-200 relative group flex flex-col items-center justify-center hover:border-[#FAD6D3] transition-colors cursor-pointer p-8">
+                            <svg width="180" height="180" viewBox="0 0 100 100" class="text-black transition-transform duration-300 group-hover:scale-105">
+                                <circle cx="50" cy="50" r="28" fill="black" />
+                                <circle cx="15" cy="15" r="4" fill="black" />
+                                <circle cx="85" cy="15" r="4" fill="black" />
+                                <circle cx="15" cy="85" r="4" fill="black" />
+                                <circle cx="85" cy="85" r="4" fill="black" />
+                            </svg>
+                            <span class="text-xs text-gray-500 font-bold tracking-widest uppercase mt-4">3. Gerarchia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project 6 Setup -->
+        <div class="mt-32 pt-32 border-t border-gray-900">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Info Column (Sticky) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">TYPO-POETRIES</h2>
+                        <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">Typo-poetries è un'esplorazione di tipografia cinetica in cui singole parole evocative (legate al vocabolario del collasso e della crisi) prendono vita attraverso il tempo e il movimento tipografico. Il progetto unisce animazioni dinamiche realizzate in Figma a sonorità ambientali, creando un'esperienza sinestetica pura in cui la forma e il suono si fondono per dare consistenza al significato tipografico.</span>
+                            <span class="lang-en hidden">Typo-poetries is an exploration of kinetic typography where single evocative words (linked to the vocabulary of collapse and crisis) come to life through time and typographic movement. The project merges dynamic animations created in Figma with ambient soundscapes, crafting a pure synesthetic experience where form and sound blend to give texture to typographic meaning.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            Programmi Usati</h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">FIGMA</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">ADOBE PREMIERE PRO</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photos Column (Scrollable / Video space) -->
+                <div class="lg:col-span-8">
+                    <div class="w-full aspect-video bg-[#0d0d0d] rounded-xl overflow-hidden shadow-2xl border border-gray-800 relative group flex flex-col items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <source src="typopoetries.pirrelloaurora.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project 7 Setup -->
+        <div class="mt-32 pt-32 border-t border-gray-900">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Info Column (Sticky) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">TESTO POETICO ALGORITMICO</h2>
+                        <span class="text-[#FAD6D3] text-sm font-bold tracking-widest uppercase">2026</span>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            <span class="lang-it">Descrizione</span>
+                            <span class="lang-en hidden">Description</span>
+                        </h4>
+                        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+                            <span class="lang-it">Testo Poetico Algoritmico (L'officina delle parole) è un'applicazione web interattiva ideata come dispositivo di allacciamento poetico. L'utente viene guidato da un algoritmo generativo o può comporre autonomamente i propri testi selezionando parole da un vocabolario fluttuante. Sviluppato in HTML5, CSS3 avanzato e JavaScript vanilla, presenta un'interfaccia minimale dal sapore editoriale con morbide sfumature cromatiche di sfondo.</span>
+                            <span class="lang-en hidden">Algorithmic Poetic Text (L'officina delle parole) is an interactive web application designed as a poetic connection device. The user is guided by a generative algorithm or can compose their own poems by selecting words from a floating vocabulary. Developed in HTML5, advanced CSS3, and vanilla JavaScript, it features a minimal, editorial-style interface with soft gradient background blobs.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-gray-500 text-sm font-bold tracking-widest uppercase mb-4 border-b border-gray-800 pb-2">
+                            Programmi Usati</h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">HTML5 / CSS3</span>
+                            <span
+                                class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-xs font-bold tracking-widest text-[#FAD6D3] cursor-default">JAVASCRIPT</span>
+                        </div>
+                        <div>
+                            <a href="testo%20poetico%20algoritmico/index.html" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAD6D3] text-black font-bold rounded-full hover:bg-transparent hover:text-[#FAD6D3] transition-colors duration-300 ring-2 ring-[#FAD6D3] tracking-widest uppercase text-xs">
+                                <i class="fas fa-external-link-alt text-[10px] mr-1"></i>
+                                <span class="lang-it">Apri Progetto</span>
+                                <span class="lang-en hidden">Open Project</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photos Column (Scrollable) -->
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <!-- Main Image -->
+                    <div
+                        class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative group border border-gray-800">
+                        <img src="testo%20poetico%20algoritmico/1.png"
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                            alt="Testo poetico algoritmico start screen">
+                    </div>
+                    <!-- Secondary Images Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="testo%20poetico%20algoritmico/2.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Testo poetico algoritmico detail 1">
+                        </div>
+                        <div
+                            class="w-full aspect-square bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-800 relative group flex flex-col items-center justify-center text-gray-600 hover:border-[#FAD6D3] transition-colors cursor-pointer">
+                            <img src="testo%20poetico%20algoritmico/3.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" alt="Testo poetico algoritmico detail 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </body>
-
 </html>
-        
-       
-
                
